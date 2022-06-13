@@ -22,9 +22,7 @@ function ConnexionInput(props) {
         onChangeText={connexionInputHandler}
         value={enteredConnexionState}
       />
-      <Text style={{ textAlign: "right", marginBottom: 38, paddingRight: 10 }}>
-        Mot de passe oublié ?
-      </Text>
+      <Text style={styles.text}>Mot de passe oublié ?</Text>
       <Pressable style={styles.button} onPress={addConnexionHandler}>
         <Text style={{ fontSize: 24, fontFamily: "cera-pro-medium" }}>
           Se connecter
@@ -48,6 +46,14 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     borderRadius: 10,
     marginBottom: 12,
+    fontFamily: "cera-pro-medium",
+    letterSpacing: 1,
+  },
+  text: {
+    textAlign: "right",
+    marginBottom: 38,
+    paddingRight: 10,
+    fontFamily: "cera-pro-light",
   },
   button: {
     borderRadius: 10,
