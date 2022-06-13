@@ -26,7 +26,9 @@ function ConnexionInput(props) {
         Mot de passe oublié ?
       </Text>
       <Pressable style={styles.button} onPress={addConnexionHandler}>
-        <Text style={{ fontSize: 24 }}>Se connecter</Text>
+        <Text style={{ fontSize: 24, fontFamily: "cera-pro-medium" }}>
+          Se connecter
+        </Text>
       </Pressable>
     </View>
   );

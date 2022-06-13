@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   containerImage: {
     alignItems: "center",
   },
-  textConnexion: { fontSize: 32 },
+  textConnexion: { fontSize: 32, fontFamily: "cera-pro-black" },
   image: {
     marginTop: 30,
     width: 400,
