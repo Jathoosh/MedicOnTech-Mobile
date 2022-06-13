@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
 
-import PageConnexion from "./screens/pageConnexion";
+import PageConnexion from "./screens/PageConnexion";
+import PageAccueil from "./screens/PageAccueil";
 
 export default function App() {
-  return <PageConnexion />;
+  return <PageAccueil />;
 }
 
 const styles = StyleSheet.create({});
