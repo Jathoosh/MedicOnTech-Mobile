@@ -10,3 +10,13 @@ commandes Expo :
 - npm run android
 - npm run ios # requires an iOS device or macOS for access to an iOS simulator
 - npm run web
+
+commande installation : 
+-npm install @react-navigation/native
+-expo install react-native-screens react-native-safe-area-context
+-npm install @react-navigation/stack
+-expo install expo-font
+-expo install expo-app-loading
+-npm install express --save
+-npm install mysqli --save
+-npm install body-parser --save

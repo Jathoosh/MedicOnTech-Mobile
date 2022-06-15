@@ -1,20 +1,44 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import PageConnexion from "./screens/PageConnexion";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import PageAccueil from "./screens/PageAccueil";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "cera-pro-light": require("./assets/fonts/Cera-Pro-Light.ttf"),
+    "cera-pro-black-italic": require("./assets/fonts/Cera-Pro-Black-Italic.ttf"),
+    "cera-pro-regular-italic": require("./assets/fonts/Cera-Pro-Regular-Italic.ttf"),
+    "cera-pro-medium": require("./assets/fonts/Cera-Pro-Medium.ttf"),
+    "cera-pro-bold": require("./assets/fonts/Cera-Pro-Bold.ttf"),
+    "cera-pro-black": require("./assets/fonts/Cera-Pro-Black.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app! oui </Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="PageConnexion">
+          <Stack.Screen
+            name="PageConnexion"
+            component={PageConnexion}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="PageAccueil"
+            component={PageAccueil}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});
