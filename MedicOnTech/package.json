@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.20.0",
     "expo": "~45.0.0",
+    "expo-app-loading": "~2.0.0",
     "expo-font": "~10.1.0",
     "expo-status-bar": "~1.3.0",
     "express": "^4.18.1",
@@ -19,6 +20,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
+    "react-native-animatable": "^1.3.3",
     "react-native-web": "0.17.7"
   },
   "devDependencies": {
