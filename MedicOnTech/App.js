@@ -30,7 +30,11 @@ export default function App() {
             component={PageConnexion}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="PageAccueil" component={PageAccueil} />
+          <Stack.Screen
+            name="PageAccueil"
+            component={PageAccueil}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
