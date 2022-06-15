@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import PageAccueil from "./screens/PageAccueil";
+import PageOrdonnance from "./screens/PageOrdonnance";
+import PageHistorique from "./screens/PageHistorique";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,8 @@ export default function App() {
             component={PageAccueil}
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="PageOrdonnance" component={PageOrdonnance} />
+          <Stack.Screen name="PageHistorique" component={PageHistorique} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

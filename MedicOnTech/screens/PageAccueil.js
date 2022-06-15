@@ -11,7 +11,15 @@ import {
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-function PageAccueil() {
+function PageAccueil({ navigation }) {
+  function NaviagateOrdonnace() {
+    navigation.navigate("PageOrdonnance");
+  }
+  function NaviagateHistorique() {
+    navigation.navigate("PageHistorique");
+    console.log("PageHistorique");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
@@ -27,7 +35,7 @@ function PageAccueil() {
           </View>
           <View style={styles.containerButton}>
             <Pressable
-              onPress={() => {}}
+              onPress={NaviagateOrdonnace}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
@@ -56,7 +64,7 @@ function PageAccueil() {
 
           <View style={styles.containerButton}>
             <Pressable
-              onPress={() => {}}
+              onPress={NaviagateHistorique}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
@@ -81,7 +89,7 @@ function PageAccueil() {
           </View>
           <View style={styles.containerButton}>
             <Pressable
-              onPress={() => {}}
+              onPress={() => navigation.navigate("PageConnexion")}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
