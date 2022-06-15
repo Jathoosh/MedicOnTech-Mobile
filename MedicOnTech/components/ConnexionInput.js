@@ -3,6 +3,7 @@ import { StyleSheet, View, TextInput, Pressable, Text } from "react-native";
 
 function ConnexionInput(props) {
   const [enteredConnexionState, setEnteredConnexion] = useState("");
+
   function connexionInputHandler(text) {
     setEnteredConnexion(text);
   }
