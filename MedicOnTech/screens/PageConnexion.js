@@ -8,15 +8,18 @@ import {
 
 import ConnexionInput from "../components/ConnexionInput";
 
-function PageConnexion() {
+function PageConnexion({ navigation }) {
   function addConnexionHandler(enteredConnexionState) {
     console.log(enteredConnexionState);
+    if (enteredConnexionState === "1234") {
+      navigation.replace("PageAccueil");
+    }
   }
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <View style={styles.containerImage}>
         <Image
-          source={require("../assets/Logo_application.png")}
+          source={require("../assets/Logo-application.png")}
           style={styles.image}
         />
         <Text style={styles.textConnexion}>Connexion</Text>
@@ -36,11 +39,16 @@ const styles = StyleSheet.create({
   containerImage: {
     alignItems: "center",
   },
-  textConnexion: { fontSize: 32, fontFamily: "cera-pro-black" },
+  textConnexion: {
+    fontSize: 32,
+    fontFamily: "cera-pro-black",
+    marginTop: 80,
+    marginBottom: 20,
+  },
   image: {
-    marginTop: 30,
-    width: 400,
-    height: 400,
+    width: 175,
+    height: 250,
     resizeMode: "contain",
+    marginTop: 50,
   },
 });

@@ -16,7 +16,6 @@ function ConnexionInput(props) {
         autoCorrect={false}
         secureTextEntry={true}
         spellCheck={false}
-        keyboardType="numeric"
         style={styles.textInput}
         placeholder="Saisir votre code pin"
         onChangeText={connexionInputHandler}
