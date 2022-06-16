@@ -15,5 +15,5 @@ export const DOCTOR = [
   new Medecin(1, "Maxence ROBICHON", 1, "", "maxence.robichon@efrei.net"),
   new Medecin(2, "Guillaume Jacquet", 2, "0620886188", "guillaume.jacquet@efrei.net"),
   new Medecin(3, "Sylvain MIGEON", 3, "0699053164", "sylvain.migeon@efrei.net"),
-  new Medecin(4, "Jathoosh THAVARASA", 4, "0666066049", "jathoosh.thavarasa]efrei.net")
+  new Medecin(4, "Jathoosh THAVARASA", 4, "0666066049", "jathoosh.thavarasa@efrei.net")
 ];
