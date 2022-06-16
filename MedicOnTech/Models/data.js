@@ -12,6 +12,8 @@ export const DATA = [
   new Ordonnance(8, "Maxence ROBICHON", 1, "2022-05-06", "Dr.Larouch"),
 ];
 export const DOCTOR = [
-  new Medecin(1, "Maxence ROBICHON", 1, "0326497859", "maxence.robichon@efrei.net"),
-  new Medecin(2, "Guillaume Jacquet", 2, "0326497859", "guillaume.jacquet@efrei.net")
+  new Medecin(1, "Maxence ROBICHON", 1, "", "maxence.robichon@efrei.net"),
+  new Medecin(2, "Guillaume Jacquet", 2, "0620886188", "guillaume.jacquet@efrei.net"),
+  new Medecin(3, "Sylvain MIGEON", 3, "0699053164", "sylvain.migeon@efrei.net"),
+  new Medecin(3, "Jathoosh THAVARASA", 3, "0666066049", "jathoosh.thavarasa]efrei.net")
 ];
