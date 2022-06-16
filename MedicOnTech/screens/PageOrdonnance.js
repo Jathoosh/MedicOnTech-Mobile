@@ -1,8 +1,23 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet, Text } from "react-native";
+import OrdonnanceItem from "../components/OrdonnanceItem";
+import { DATA } from "../Models/data";
 function PageOrdonnance() {
+  const displayOrdonnance = DATA.filter((dataItem) => {
+    return dataItem.personne.indexOf("Maxence ROBICHON") >= 0;
+  });
+
+  function renderOrdonnanceItem(itemData) {
+    return <OrdonnanceItem data={itemData.item} />;
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Ordonnances</Text>
+      <FlatList
+        data={displayOrdonnance}
+        keyExtractor={(item) => item.id}
+        renderItem={renderOrdonnanceItem}
+        style={styles.list}
+      />
     </View>
   );
 }
@@ -10,5 +25,5 @@ function PageOrdonnance() {
 export default PageOrdonnance;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
+  container: { flex: 1 },
 });

@@ -66,6 +66,10 @@ function PageAccueil({ navigation }) {
     navigation.navigate("PageHistorique");
     console.log("PageHistorique");
   }
+  function NaviagateContactDoctor() {
+    navigation.navigate("PageContactDoctor");
+    console.log("PageContactDoctor");
+  }
 
   return (
     <View style={styles.container}>
@@ -84,7 +88,7 @@ function PageAccueil({ navigation }) {
         <Text style={styles.subTitle}>Mes ordonnances</Text>
       </View>
       <View style={styles.containerButton}>
-        <Pressable onPress={() => {}} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
+        <Pressable onPress={NaviagateOrdonnance} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
           <View>
             <Text style={styles.buttonTitle}>Ordonnances valides</Text>
             <Text style={styles.buttonDesc}>
@@ -103,7 +107,7 @@ function PageAccueil({ navigation }) {
       </View>
       
       <View style={styles.containerButton}>
-        <Pressable onPress={() => {}} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
+        <Pressable onPress={NaviagateHistorique} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
           <View style={{alignItems: "flex-end"}}>
             <Text style={styles.buttonTitleHist}>Mon historique</Text>
             <Text style={styles.buttonDesc}>
@@ -140,9 +144,9 @@ function PageAccueil({ navigation }) {
         </Pressable>
       </View>
       <View style={styles.containerButton}>
-        <Pressable onPress={() => {}} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
+        <Pressable onPress={NaviagateContactDoctor} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
           
-            <Text style={styles.buttonTitle}>Contacter mon medecin</Text>
+            <Text style={styles.buttonTitle}>Contacter mon médecin</Text>
             <Text style={styles.buttonDesc}>
               Appuyez pour contacter l'un de mes medecins
             </Text>
