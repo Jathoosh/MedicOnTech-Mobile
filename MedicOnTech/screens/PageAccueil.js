@@ -8,7 +8,9 @@ import {
   Pressable,
   Animated,
   PixelRatio,
-  Dimensions
+  Dimensions,
+  Linking, 
+  Platform
 } from "react-native";
 
 const { 
@@ -53,9 +55,11 @@ export {
   pixelSizeHorizontal
 };
 
+const url = "https://www.google.fr/maps/search/pharmacie";
+
 
 function PageAccueil({ navigation }) {
-  function NaviagateOrdonnace() {
+  function NaviagateOrdonnance() {
     navigation.navigate("PageOrdonnance");
   }
   function NaviagateHistorique() {
@@ -120,7 +124,7 @@ function PageAccueil({ navigation }) {
         <Text style={styles.subTitle}>Autre</Text>
       </View>
       <View style={styles.containerButton}>
-        <Pressable onPress={() => {}} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
+        <Pressable onPress={() => {Linking.openURL(url)}} android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
           
             <Text style={styles.buttonTitle}>Trouver une pharmacie</Text>
             <Text style={styles.buttonDesc}>
