@@ -1,10 +1,9 @@
-import { View, Pressable, Text, Image, StyleSheet } from "react-native";
+import { View, Pressable, Text, Image, StyleSheet, Linking } from "react-native";
 
 function OrdonnanceItem({ data }) {
   return (
     <View style={styles.container}>
-      <View
-      >
+      <View>
         <Text style={styles.buttonTitle}>{data.personne}</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           
@@ -18,6 +17,16 @@ function OrdonnanceItem({ data }) {
             </Text>
           </View>
         </View>
+      <View style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
+        <Pressable onPress={() => {Linking.openURL("tel:"+data.numero)}} android_ripple={{color: '#FFFFFF'}} style={styles.buttonOption}>
+          <Image source={require("../assets/phone.png")} style={styles.buttonIcon} />
+          <Text style={styles.buttonText}>Appeler</Text>
+        </Pressable>
+        <Pressable onPress={() => {Linking.openURL("mailto:"+data.email)}} android_ripple={{color: '#FFFFFF'}} style={styles.buttonOption}>
+        <Image source={require("../assets/letter-white.png")} style={styles.buttonIcon} />
+          <Text style={styles.buttonText}>Envoyer un email</Text>
+        </Pressable>
+      </View>
       </View>
     </View>
   );
@@ -48,4 +57,27 @@ const styles = StyleSheet.create({
     marginTop: 5,
     width: "100%",
   },
+  buttonOption: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: 10,
+    padding: 10,
+    backgroundColor: "#1e4edd",
+    borderRadius: 13,
+    
+
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontFamily: "cera-pro-light",
+    
+  },
+  buttonIcon: {
+    width: 25,
+    height: 25,
+    marginRight: 10,
+    marginLeft: 2,
+  },
+
 });
