@@ -37,7 +37,11 @@ export default function App() {
             component={PageAccueil}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="PageOrdonnance" component={PageOrdonnance} />
+          <Stack.Screen
+            name="PageOrdonnance"
+            component={PageOrdonnance}
+            options={{ title: "Mes ordonnances" }}
+          />
           <Stack.Screen
             name="PageHistorique"
             component={PageHistorique}
