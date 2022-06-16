@@ -38,7 +38,11 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="PageOrdonnance" component={PageOrdonnance} />
-          <Stack.Screen name="PageHistorique" component={PageHistorique} />
+          <Stack.Screen
+            name="PageHistorique"
+            component={PageHistorique}
+            options={{ title: "Mes Ordonnances" }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
