@@ -7,9 +7,53 @@ import {
     ScrollView,
     Pressable,
     Animated,
+    PixelRatio,
+    Dimensions
 } from "react-native";
 
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+const { 
+  width: SCREEN_WIDTH, 
+  height: SCREEN_HEIGHT 
+  } = Dimensions.get('window');
+  console.log(SCREEN_WIDTH)
+  console.log(SCREEN_HEIGHT)
+
+const widthBaseScale = SCREEN_WIDTH / 384;
+const heightBaseScale = SCREEN_HEIGHT / 816;
+
+function normalize(size, based = 'width') {
+  const newSize = (based === 'height') ? size * heightBaseScale : size * widthBaseScale;
+  return Math.round(PixelRatio.roundToNearestPixel(newSize));
+ }
+
+ //for width pixel
+const widthPixel = (size) => {
+  return normalize(size, 'width');
+};
+//for height pixel
+const heightPixel = (size) => {
+  return normalize(size, 'height');
+};
+//for font pixel
+const fontPixel = (size) => {
+  return heightPixel(size);
+};
+//for Margin and Padding vertical pixel
+const pixelSizeVertical = (size) => {
+  return heightPixel(size);
+};
+//for Margin and Padding horizontal pixel
+const pixelSizeHorizontal = (size) => {
+  return widthPixel(size);
+};
+export {
+  widthPixel,
+  heightPixel,
+  fontPixel,
+  pixelSizeVertical,
+  pixelSizeHorizontal
+};
+
 
 function PageAccueil() {
   return (
@@ -17,7 +61,7 @@ function PageAccueil() {
       <View style={styles.containerTitle}>
         <Text style={styles.title}>MedicOnTech</Text>
       </View>
-      <ScrollView contentContainerStyle={{ flexGrow: 1, marginTop: 100 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1, marginTop: pixelSizeVertical(100) }}>
         <View style={styles.containerImage}>
           <Image
             source={require("../assets/logo.png")}
@@ -37,10 +81,10 @@ function PageAccueil() {
               </Text>
               </View>
               
-              <View style={{height: 120, position: "absolute", top: 0, left: "70%"}}>
+              <View style={{height: heightPixel(120), position: "absolute", top: 0, left: "70%"}}>
                 <Image
                   source={require("../assets/ordonnance.png")}
-                  style={{width: 100, height: 120, resizeMode: "contain"}}
+                  style={{width: widthPixel(100), height: heightPixel(120), resizeMode: "contain"}}
                 />
               </View>
           </Pressable>
@@ -55,10 +99,10 @@ function PageAccueil() {
                 Appuyez pour consulter l'historique de vos ordonnances
               </Text>
             </View>
-            <View style={{height: 120, position: "absolute", top: 0}}>
+            <View style={{height: heightPixel(120), position: "absolute", top: 0}}>
                 <Image
                   source={require("../assets/ordonnance.png")}
-                  style={{width: 100, height: 120, resizeMode: "contain"}}
+                  style={{width: widthPixel(100), height: heightPixel(120), resizeMode: "contain"}}
                 />
               </View>
           </Pressable>
@@ -75,10 +119,10 @@ function PageAccueil() {
               <Text style={styles.buttonDesc}>
                 Appuyez pour trouver une pharmacie proche de moi
               </Text>
-              <View style={{height: 120, position: "absolute", top: 15, left: "72%"}}>
+              <View style={{height: heightPixel(120), position: "absolute", top: 15, left: "72%"}}>
                 <Image
                   source={require("../assets/map.png")}
-                  style={{width: 100, height: 120, resizeMode: "contain"}}
+                  style={{width: widthPixel(100), height: heightPixel(120), resizeMode: "contain"}}
                 />
               </View>
             
@@ -91,24 +135,24 @@ function PageAccueil() {
               <Text style={styles.buttonDesc}>
                 Appuyez pour contacter l'un de mes medecins
               </Text>
-              <View style={{height: 120, position: "absolute", top: 0, left: "72%"}}>
+              <View style={{height: heightPixel(120), position: "absolute", top: 0, left: "72%"}}>
                 <Image
                   source={require("../assets/medecin.png")}
-                  style={{width: 100, height: 120, resizeMode: "contain"}}
+                  style={{width: widthPixel(100), height: heightPixel(120), resizeMode: "contain"}}
                 />
               </View>
             
           </Pressable>
         </View>
         </View>
-        <View style={{marginTop: 15}}/>
+        <View style={{marginTop: pixelSizeVertical(15)}}/>
         <View style={styles.containerSubButton}>
           <Pressable android_ripple={{color: '#FFFFFF'}} style={{flex: 1}}>
               <Text style={styles.buttonTitleSub}>Paramètres</Text>
-              <View style={{height: 50, position: "absolute", top: 0}}>
+              <View style={{height: heightPixel(50), position: "absolute", top: 0}}>
                 <Image
                   source={require("../assets/engrenage.png")}
-                  style={{width: 50, height: 50, resizeMode: "contain"}}
+                  style={{width: widthPixel(50), height: heightPixel(50), resizeMode: "contain"}}
                 />
               </View>
           </Pressable>
@@ -118,15 +162,15 @@ function PageAccueil() {
             
               <Text style={styles.buttonTitleSub}>Nous contacter</Text>
               
-              <View style={{height: 50, position: "absolute", top: 0}}>
+              <View style={{height: heightPixel(50), position: "absolute", top: 0}}>
                 <Image
                   source={require("../assets/lettre.png")}
-                  style={{width: 50, height: 50, resizeMode: "contain"}}
+                  style={{width: widthPixel(50), height: heightPixel(50), resizeMode: "contain"}}
                 />
               </View>
           </Pressable>
         </View>
-        <View style={{height:200}}/>
+        <View style={{height:heightPixel(100)}}/>
       </ScrollView>
       
     </View>
@@ -154,88 +198,89 @@ const styles = StyleSheet.create({
 
     },
     containerSubTitle: {
-      marginTop: 30,
-      marginLeft: 28,
+      marginTop: pixelSizeVertical(30),
+      marginLeft: pixelSizeHorizontal(28),
       
     },
     containerImage: {
-      marginTop: 30,
-      height: 150,
+      marginTop: pixelSizeVertical(30),
+      height: heightPixel(150),
       alignItems: "center",
       
     },
-    textConnexion: { fontSize: 32 },
+    textConnexion: { fontSize: fontPixel(32) },
     image: {
       
       height: "100%",
       resizeMode: "contain",
     },
     title:{
-        fontSize: 32,
+        fontSize: fontPixel(32),
         fontFamily: "cera-pro-black",
-        marginTop: 37,
-        marginLeft: 20,
-        marginBottom: 15,
+        marginTop: pixelSizeVertical(37),
+        marginLeft: pixelSizeHorizontal(20),
+        marginBottom: pixelSizeVertical(15),
     },
     subTitle:{
-      fontSize: 28,
+      fontSize: fontPixel(28),
       fontFamily: "cera-pro-black",
-      marginTop: 0,
-      marginLeft: 0,
-      marginBottom: 0
+      marginTop: pixelSizeVertical(0),
+      marginLeft: pixelSizeHorizontal(0),
+      marginBottom: pixelSizeVertical(0)
   },
   containerButton: {
-    marginHorizontal: 15,
-    marginBottom: 9,
-    height: 120, //130 sur le figma
+    marginHorizontal: pixelSizeHorizontal(15),
+    marginBottom: pixelSizeVertical(9),
+    height: heightPixel(120), //130 sur le figma
     width: "auto",
     backgroundColor: '#2fb55e',
     borderRadius: 10,
     overflow: "hidden",
+   
     
   },
   
 
   containerSubButton: {
-    marginHorizontal: 15,
-    marginBottom: 9,
-    height: 50, //130 sur le figma
+    marginHorizontal: pixelSizeHorizontal(15),
+    marginBottom: pixelSizeVertical(9),
+    height: heightPixel(50), 
     width: "auto",
     backgroundColor: "#d9d9d9",
     borderRadius: 10,
   },
   buttonTitle: {
     
-    fontSize: 22,
+    fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
-    marginLeft: 12,
-    marginTop: 22,
+    marginLeft: pixelSizeHorizontal(12),
+    marginTop: pixelSizeVertical(22),
     width: "80%",
     
    
   },
   buttonTitleHist: {
     
-    fontSize: 22,
+    fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
-    marginLeft: 12,
-    marginTop: 22,
+    marginLeft: pixelSizeHorizontal(12),
+    marginTop: pixelSizeVertical(22),
     width: "70%",
     
    
   },
   buttonDesc: {
-    fontSize: 18,
+    fontSize: fontPixel(18),
     fontFamily: "cera-pro-light",
-    marginLeft: 12,
+    marginLeft: pixelSizeHorizontal(12),
     width: "70%",
     
   },
   buttonTitleSub: {
-    fontSize: 22,
+    fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
-    marginLeft: 55,
-    marginTop: 10,
+    marginLeft: pixelSizeHorizontal(55),
+    marginTop: pixelSizeVertical(10),
   },
   containerScroll:{
     width: "100%",
