@@ -187,7 +187,7 @@ function PageAccueil({ navigation }) {
           </View>
           <View style={styles.containerButton}>
             <Pressable
-              onPress={() => {}}
+              onPress={NaviagateContactDoctor}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
