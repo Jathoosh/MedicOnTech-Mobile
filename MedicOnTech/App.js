@@ -8,6 +8,7 @@ import PageAccueil from "./screens/PageAccueil";
 import PageOrdonnance from "./screens/PageOrdonnance";
 import PageHistorique from "./screens/PageHistorique";
 import PageContactDoctor from "./screens/PageContactDoctor";
+import PageContactUs from "./screens/PageContactUs";
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +51,11 @@ export default function App() {
             name="PageHistorique"
             component={PageHistorique}
             options={{ title: "Mes Ordonnances" }}
+          />
+          <Stack.Screen
+            name="PageContactUs"
+            component={PageContactUs}
+            options={{ headerShown: false }}
           />
 
         </Stack.Navigator>
