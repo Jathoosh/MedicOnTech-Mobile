@@ -7,6 +7,34 @@ import {
 } from "react-native";
 
 import ConnexionInput from "../components/ConnexionInput";
+/*import { openDatabase } from "react-native-sqlite-storage";*/
+
+/*const db = openDatabase({
+  name: "medicontech",
+  location: "default",
+});
+
+const createTables = () => {
+  db.transaction((query) => {
+    query(
+      `CREATE TABLE IF NOT EXISTS connexion (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name VARCHAR(255)
+    )`,
+      [],
+      (Sqltext, res) => {
+        console.log(res);
+      },
+      (error) => {
+        console.log("error" + error.message);
+      }
+    );
+  });
+};
+
+useEffect(() => {
+  createTables();
+}, []);*/
 
 function PageConnexion({ navigation }) {
   function addConnexionHandler(enteredConnexionState) {

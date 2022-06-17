@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, FlatList, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import PageConnexion from "./screens/PageConnexion";
 import { useFonts } from "expo-font";
@@ -39,7 +39,11 @@ export default function App() {
             options={{ headerShown: false }}
           />
 
-          <Stack.Screen name="PageContactDoctor" component={PageContactDoctor} options={{ title: "Contacter mon médecin"}} />
+          <Stack.Screen
+            name="PageContactDoctor"
+            component={PageContactDoctor}
+            options={{ title: "Contacter mon médecin" }}
+          />
 
           <Stack.Screen
             name="PageOrdonnance"
@@ -51,7 +55,6 @@ export default function App() {
             component={PageHistorique}
             options={{ title: "Mes Ordonnances" }}
           />
-
         </Stack.Navigator>
       </NavigationContainer>
     </>
