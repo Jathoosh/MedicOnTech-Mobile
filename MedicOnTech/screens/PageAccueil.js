@@ -3,14 +3,11 @@ import {
   Text,
   StyleSheet,
   Image,
-  SafeAreaView,
   ScrollView,
   Pressable,
-  Animated,
   PixelRatio,
   Dimensions,
   Linking,
-  Platform,
 } from "react-native";
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -55,21 +52,18 @@ export {
 const url = "https://www.google.fr/maps/search/pharmacie";
 
 function PageAccueil({ navigation }) {
-  function NaviagateOrdonnance() {
+  function NavigateOrdonnance() {
     navigation.navigate("PageOrdonnance");
   }
-  function NaviagateHistorique() {
+  function NavigateHistorique() {
     navigation.navigate("PageHistorique");
-    console.log("PageHistorique");
   }
-  function NaviagateContactDoctor() {
+  function NavigateContactDoctor() {
     navigation.navigate("PageContactDoctor");
-    console.log("PageContactDoctor");
   }
 
   return (
     <View style={styles.container}>
-
       <View style={styles.containerTitle}>
         <Text style={styles.title}>MedicOnTech</Text>
       </View>
@@ -88,7 +82,7 @@ function PageAccueil({ navigation }) {
           </View>
           <View style={styles.containerButton}>
             <Pressable
-              onPress={NaviagateOrdonnance}
+              onPress={NavigateOrdonnance}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
@@ -121,7 +115,7 @@ function PageAccueil({ navigation }) {
 
           <View style={styles.containerButton}>
             <Pressable
-              onPress={NaviagateHistorique}
+              onPress={NavigateHistorique}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
@@ -187,7 +181,7 @@ function PageAccueil({ navigation }) {
           </View>
           <View style={styles.containerButton}>
             <Pressable
-              onPress={NaviagateContactDoctor}
+              onPress={NavigateContactDoctor}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
@@ -218,7 +212,6 @@ function PageAccueil({ navigation }) {
         <View style={{ marginTop: pixelSizeVertical(15) }} />
         <View style={styles.containerSubButton}>
           <Pressable android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
-
             <Text style={styles.buttonTitleSub}>Paramètres</Text>
             <View
               style={{ height: heightPixel(50), position: "absolute", top: 0 }}
