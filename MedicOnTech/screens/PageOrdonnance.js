@@ -7,7 +7,7 @@ function PageOrdonnance() {
   });
 
   function renderOrdonnanceItem(itemData) {
-    return <OrdonnanceItem data={itemData.item} />;
+    return <OrdonnanceItem data={itemData.item} page={"ordonnance"} />;
   }
 
   return (

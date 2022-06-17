@@ -1,36 +1,56 @@
 import { View, Pressable, Text, Image, StyleSheet } from "react-native";
 
-function OrdonnanceItem({ data }) {
+function OrdonnanceItem({ data, page }) {
   return (
     <View style={styles.container}>
       <Pressable
         onPress={() => {}}
         android_ripple={{ color: "#FFFFFF" }}
-
         style={{ flex: 1, borderRadius: 10 }}
       >
-        <Text style={styles.buttonTitle}>{data.personne}</Text>
+        {page === "historique" && (
+          <Text style={[styles.buttonTitle, { marginBottom: 10 }]}>
+            {data.dateDelivre}
+          </Text>
+        )}
+        {page === "ordonnance" && (
+          <Text style={styles.buttonTitle}>{data.personne}</Text>
+        )}
+
         <View
           style={{
             flexDirection: "row",
           }}
         >
-          <Image
-            source={require("../assets/code_barre.png")}
-            style={styles.image}
-          />
+          {page === "ordonnance" && (
+            <Image
+              source={require("../assets/code_barre.png")}
+              style={styles.image}
+            />
+          )}
 
           <View style={styles.innerText}>
-            <Text style={styles.buttonDesc}>
-              Délivré le : {data.dateDelivre}
-            </Text>
+            {page === "ordonnance" && (
+              <Text style={styles.buttonDesc}>
+                Délivré le : {data.dateDelivre}
+              </Text>
+            )}
+            {page === "historique" && (
+              <Text style={styles.buttonDesc}>{data.personne}</Text>
+            )}
+
             <Text style={styles.buttonDesc}>Par : {data.docteur}</Text>
           </View>
         </View>
-        <View style={styles.buttonDisplay}>
-          <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
-        </View>
-
+        {page === "ordonnance" ? (
+          <View style={styles.buttonDisplay}>
+            <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
+          </View>
+        ) : (
+          <View style={[styles.buttonDisplay, { marginTop: 20 }]}>
+            <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
+          </View>
+        )}
       </Pressable>
     </View>
   );
@@ -44,7 +64,6 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: "#F3F3F3",
     borderRadius: 10,
-
   },
 
   buttonTitle: {
@@ -52,7 +71,6 @@ const styles = StyleSheet.create({
     fontFamily: "cera-pro-black",
     alignSelf: "center",
     marginTop: 10,
-
   },
   buttonDesc: {
     fontSize: 18,
@@ -73,6 +91,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: "nowrap",
     justifyContent: "space-evenly",
-
   },
 });
