@@ -6,22 +6,31 @@ function OrdonnanceItem({ data }) {
       <Pressable
         onPress={() => {}}
         android_ripple={{ color: "#FFFFFF" }}
-        style={{ flex: 1 }}
+
+        style={{ flex: 1, borderRadius: 10 }}
       >
         <Text style={styles.buttonTitle}>{data.personne}</Text>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
           <Image
-            source={require("../assets/ordonnance.png")}
-            style={{ width: 100, height: 120, resizeMode: "contain" }}
+            source={require("../assets/code_barre.png")}
+            style={styles.image}
           />
 
-          <View>
+          <View style={styles.innerText}>
             <Text style={styles.buttonDesc}>
               Délivré le : {data.dateDelivre}
             </Text>
-            <Text>Par : {data.docteur}</Text>
+            <Text style={styles.buttonDesc}>Par : {data.docteur}</Text>
           </View>
         </View>
+        <View style={styles.buttonDisplay}>
+          <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
+        </View>
+
       </Pressable>
     </View>
   );
@@ -31,9 +40,11 @@ export default OrdonnanceItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: "black",
-    margin: 10,
+
+    margin: 20,
+    backgroundColor: "#F3F3F3",
+    borderRadius: 10,
+
   },
 
   buttonTitle: {
@@ -41,12 +52,27 @@ const styles = StyleSheet.create({
     fontFamily: "cera-pro-black",
     alignSelf: "center",
     marginTop: 10,
-    width: "80%",
+
   },
   buttonDesc: {
     fontSize: 18,
-    fontFamily: "cera-pro-light",
-    marginLeft: 12,
-    width: "70%",
+    fontFamily: "cera-pro-medium",
+  },
+  buttonDisplay: {
+    backgroundColor: "#1E4EDD",
+    borderBottomLeftRadius: 10,
+    borderBottomEndRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 40,
+  },
+  textDisplay: { color: "white", fontFamily: "cera-pro-medium", fontSize: 18 },
+  image: { width: 150, height: 105, resizeMode: "contain", marginLeft: 15 },
+  innerText: {
+    paddingLeft: 15,
+    flex: 1,
+    flexWrap: "nowrap",
+    justifyContent: "space-evenly",
+
   },
 });

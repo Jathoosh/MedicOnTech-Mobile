@@ -25,5 +25,5 @@ function PageOrdonnance() {
 export default PageOrdonnance;
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, backgroundColor: "#FFFFFF" },
 });
