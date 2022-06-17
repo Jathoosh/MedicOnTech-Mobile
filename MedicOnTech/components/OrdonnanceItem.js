@@ -6,6 +6,7 @@ function OrdonnanceItem({ data }) {
       <Pressable
         onPress={() => {}}
         android_ripple={{ color: "#FFFFFF" }}
+
         style={{ flex: 1, borderRadius: 10 }}
       >
         <Text style={styles.buttonTitle}>{data.personne}</Text>
@@ -29,6 +30,7 @@ function OrdonnanceItem({ data }) {
         <View style={styles.buttonDisplay}>
           <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
         </View>
+
       </Pressable>
     </View>
   );
@@ -38,9 +40,11 @@ export default OrdonnanceItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
     margin: 20,
     backgroundColor: "#F3F3F3",
     borderRadius: 10,
+
   },
 
   buttonTitle: {
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
     fontFamily: "cera-pro-black",
     alignSelf: "center",
     marginTop: 10,
+
   },
   buttonDesc: {
     fontSize: 18,
@@ -68,5 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: "nowrap",
     justifyContent: "space-evenly",
+
   },
 });

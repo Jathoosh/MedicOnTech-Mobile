@@ -62,9 +62,14 @@ function PageAccueil({ navigation }) {
     navigation.navigate("PageHistorique");
     console.log("PageHistorique");
   }
+  function NaviagateContactDoctor() {
+    navigation.navigate("PageContactDoctor");
+    console.log("PageContactDoctor");
+  }
 
   return (
     <View style={styles.container}>
+
       <View style={styles.containerTitle}>
         <Text style={styles.title}>MedicOnTech</Text>
       </View>
@@ -213,6 +218,7 @@ function PageAccueil({ navigation }) {
         <View style={{ marginTop: pixelSizeVertical(15) }} />
         <View style={styles.containerSubButton}>
           <Pressable android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
+
             <Text style={styles.buttonTitleSub}>Paramètres</Text>
             <View
               style={{ height: heightPixel(50), position: "absolute", top: 0 }}

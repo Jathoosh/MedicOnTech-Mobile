@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import PageAccueil from "./screens/PageAccueil";
 import PageOrdonnance from "./screens/PageOrdonnance";
 import PageHistorique from "./screens/PageHistorique";
+import PageContactDoctor from "./screens/PageContactDoctor";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,9 @@ export default function App() {
             component={PageAccueil}
             options={{ headerShown: false }}
           />
+
+          <Stack.Screen name="PageContactDoctor" component={PageContactDoctor} options={{ title: "Contacter mon médecin"}} />
+
           <Stack.Screen
             name="PageOrdonnance"
             component={PageOrdonnance}
@@ -47,6 +51,7 @@ export default function App() {
             component={PageHistorique}
             options={{ title: "Mes Ordonnances" }}
           />
+
         </Stack.Navigator>
       </NavigationContainer>
     </>
