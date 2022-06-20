@@ -20,8 +20,9 @@ function Header(props) {
       >
         <Text style={styles.buttonOptionText}>Retour</Text>
       </Pressable>
-
-      <Text style={styles.Text}>{props.nameTitle}</Text>
+      <View style={styles.TextView}>
+        <Text style={styles.Text}>{props.nameTitle}</Text>
+      </View>
     </View>
   );
 }
@@ -38,8 +39,9 @@ const styles = StyleSheet.create({
   },
   Text: {
     fontFamily: "cera-pro-black",
-    fontSize: 28,
+    fontSize: fontPixel(22),
   },
+  TextView: { justifyContent: "center" },
   buttonOption: {
     width: widthPixel(80),
     height: heightPixel(40),
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     justifyContent: "center",
     alignItems: "center",
-    marginRight: widthPixel(20),
+    marginRight: pixelSizeHorizontal(10),
   },
   buttonOptionText: {
     fontSize: fontPixel(20),
