@@ -1,4 +1,4 @@
-import { View, FlatList, StyleSheet, Text } from "react-native";
+import { View, FlatList, StyleSheet, ActivityIndicator } from "react-native";
 import DoctorItem from "../components/DoctorItem";
 import { DOCTOR } from "../Models/data";
 import React, { useEffect, useState } from "react";
@@ -33,12 +33,16 @@ function PageContactDoctor() {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item.Id_Person}
-        renderItem={renderDoctorItem}
-        style={styles.list}
-      />
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.Id_Person}
+          renderItem={renderDoctorItem}
+          style={styles.list}
+        />
+      )}
     </View>
   );
 }
