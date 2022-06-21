@@ -1,3 +1,4 @@
+
 import { View, Pressable, Text, StyleSheet } from "react-native";
 import {
   widthPixel,
@@ -5,6 +6,7 @@ import {
   fontPixel,
   pixelSizeVertical,
   pixelSizeHorizontal,
+
 } from "./Sizer";
 import { useNavigation } from "@react-navigation/native";
 
@@ -22,6 +24,7 @@ function Header(props) {
       </Pressable>
 
       <Text style={styles.Text}>{props.nameTitle}</Text>
+
     </View>
   );
 }
@@ -29,6 +32,7 @@ function Header(props) {
 export default Header;
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     flexDirection: "row",
@@ -55,4 +59,5 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     padding: pixelSizeVertical(0),
   },
+
 });

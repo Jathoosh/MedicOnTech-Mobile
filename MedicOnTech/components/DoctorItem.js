@@ -43,7 +43,7 @@ export {
   pixelSizeHorizontal
 };
 
-function OrdonnanceItem({ data }) {
+function DoctorItem({ data }) {
   return (
     <View style={styles.container}>
       <View>
@@ -75,7 +75,7 @@ function OrdonnanceItem({ data }) {
   );
 }
 
-export default OrdonnanceItem;
+export default DoctorItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
