@@ -8,7 +8,11 @@ import PageAccueil from "./screens/PageAccueil";
 import PageOrdonnance from "./screens/PageOrdonnance";
 import PageHistorique from "./screens/PageHistorique";
 import PageContactDoctor from "./screens/PageContactDoctor";
+
 import PageContactUs from "./screens/PageContactUs";
+
+import Header from "./components/Header";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -40,18 +44,28 @@ export default function App() {
             options={{ headerShown: false }}
           />
 
-          <Stack.Screen name="PageContactDoctor" component={PageContactDoctor} options={{ title: "Contacter mon médecin"}} />
+          <Stack.Screen
+            name="PageContactDoctor"
+            component={PageContactDoctor}
+            options={{ title: "Contacter mon médecin" }}
+          />
 
           <Stack.Screen
             name="PageOrdonnance"
             component={PageOrdonnance}
-            options={{ title: "Mes ordonnances" }}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Mes ordonnances" />
+              ),
+            }}
           />
           <Stack.Screen
             name="PageHistorique"
             component={PageHistorique}
             options={{ title: "Mes Ordonnances" }}
           />
+
           <Stack.Screen
             name="PageContactUs"
             component={PageContactUs}
