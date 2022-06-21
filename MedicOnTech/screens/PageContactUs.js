@@ -1,55 +1,21 @@
 import { View, Text, StyleSheet, Dimensions, PixelRatio, Pressable, Image, Linking } from "react-native";
 import Header from "../components/Header";
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
-
-const widthBaseScale = SCREEN_WIDTH / 384;
-const heightBaseScale = SCREEN_HEIGHT / 816;
-
-function normalize(size, based = "width") {
-  const newSize =
-    based === "height" ? size * heightBaseScale : size * widthBaseScale;
-  return Math.round(PixelRatio.roundToNearestPixel(newSize));
-}
-
-//for width pixel
-const widthPixel = (size) => {
-  return normalize(size, "width");
-};
-//for height pixel
-const heightPixel = (size) => {
-  return normalize(size, "height");
-};
-//for font pixel
-const fontPixel = (size) => {
-  return heightPixel(size);
-};
-//for Margin and Padding vertical pixel
-const pixelSizeVertical = (size) => {
-  return heightPixel(size);
-};
-//for Margin and Padding horizontal pixel
-const pixelSizeHorizontal = (size) => {
-  return widthPixel(size);
-};
-export {
+import {
   widthPixel,
   heightPixel,
   fontPixel,
   pixelSizeVertical,
   pixelSizeHorizontal,
-};
 
-function RenderHeader(){
-  return (
-    <Header title={"Contactez-nous"} />
-  );
-}
+} from "../components/Sizer";
+
+
 
 function PageContactUs() {
   return (
     <View style={styles.container}>
-      {RenderHeader()}
+      
       <View style={{marginTop: pixelSizeVertical(110)}}>
       <View style={styles.buttonOptionViewBlue}>
         <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {Linking.openURL("mailto:team.medicontech@gmail.com")}}>

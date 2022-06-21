@@ -69,7 +69,12 @@ export default function App() {
           <Stack.Screen
             name="PageContactUs"
             component={PageContactUs}
-            options={{ headerShown: false }}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Nous contacter" />
+              ),
+            }}
           />
 
         </Stack.Navigator>
