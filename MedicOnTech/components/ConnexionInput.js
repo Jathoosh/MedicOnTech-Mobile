@@ -2,15 +2,22 @@ import { useState } from "react";
 import { StyleSheet, View, TextInput, Pressable, Text } from "react-native";
 
 function ConnexionInput(props) {
-  const [enteredConnexionState, setEnteredConnexion] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  function connexionInputHandler(text) {
-    setEnteredConnexion(text);
-  }
-  function addConnexionHandler() {
-    props.onAddConnexion(enteredConnexionState);
-    setEnteredConnexion("");
-  }
+  const onChangePasswordHandler = (password) => {
+    setPassword(password);
+  };
+
+  const onSubmitFormHandler = async (event) => {
+    if (typeof password !== "string" || password === "") {
+      alert("Password or Email is invalid");
+      return;
+    }
+    props.onAddConnexion(password);
+    setPassword("");
+  };
+
   return (
     <View style={styles.encadres}>
       <TextInput
@@ -19,11 +26,16 @@ function ConnexionInput(props) {
         spellCheck={false}
         style={styles.textInput}
         placeholder="Saisir votre code pin"
-        onChangeText={connexionInputHandler}
-        value={enteredConnexionState}
+        onChangeText={onChangePasswordHandler}
+        editable={!isLoading}
+        value={password}
       />
       <Text style={styles.text}>Mot de passe oublié ?</Text>
-      <Pressable style={styles.button} onPress={addConnexionHandler}>
+      <Pressable
+        style={styles.button}
+        onPress={onSubmitFormHandler}
+        disabled={isLoading}
+      >
         <Text style={{ fontSize: 24, fontFamily: "cera-pro-medium" }}>
           Se connecter
         </Text>
