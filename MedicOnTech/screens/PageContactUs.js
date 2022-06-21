@@ -52,7 +52,7 @@ function PageContactUs() {
       {RenderHeader()}
       <View style={{marginTop: pixelSizeVertical(110)}}>
       <View style={styles.buttonOptionViewBlue}>
-        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} >
+        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {Linking.openURL("mailto:team.medicontech@gmail.com")}}>
           <Image source={require("../assets/letter-white.png")} style={styles.image}/>
           <Text style={styles.buttonOptionText}>Nous contacter par email</Text>
         </Pressable>
