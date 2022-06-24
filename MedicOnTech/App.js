@@ -8,11 +8,10 @@ import PageAccueil from "./screens/PageAccueil";
 import PageOrdonnance from "./screens/PageOrdonnance";
 import PageHistorique from "./screens/PageHistorique";
 import PageContactDoctor from "./screens/PageContactDoctor";
-
+import PageOrdonnancePlus from "./screens/PageOrdonnancePlus";
 import PageContactUs from "./screens/PageContactUs";
 
 import Header from "./components/Header";
-
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +75,17 @@ export default function App() {
               ),
             }}
           />
+          <Stack.Screen
+            name="PageOrdonnancePlus"
+            component={PageOrdonnancePlus}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageOrdonnance" nameTitle="Ordonnance" />
+              ),
+            }}
+          />
+       
 
         </Stack.Navigator>
       </NavigationContainer>
