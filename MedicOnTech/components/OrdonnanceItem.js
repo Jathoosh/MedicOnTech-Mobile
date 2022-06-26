@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 function OrdonnanceItem({ data, page }) {
   const navigation = useNavigation();
   function NavigateOrdonnance() {
-    navigation.navigate("PageOrdonnancePlus", data);
+    navigation.navigate("PageOrdonnancePlus", {data: data});
   }
   return (
     <View style={styles.container}>
