@@ -8,6 +8,11 @@ import {
 
 } from "../components/Sizer";
 
+import { ORDONNANCE_MEDICAMENT } from "../Models/data";
+import { ORDONNANCE_SERVICE } from "../Models/data";
+import { MEDICAMENT } from "../Models/data";
+import { SERVICE } from "../Models/data";
+
 const months = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
 
 const formatDate = (date) => {
@@ -17,8 +22,22 @@ const formatDate = (date) => {
   string += tempDate.getFullYear().toString()
   return string;
 };
+
+
 function PageOrdonnancePlus({ route }) {
   const { data } = route.params;
+
+
+  const filtered_pres_med = ORDONNANCE_MEDICAMENT.filter((dataItem) => {
+    return dataItem.Id_prescription === data.id;
+  });
+  const filtered_pres_serv = ORDONNANCE_SERVICE.filter((dataItem) => {
+    return dataItem.Id_prescription === data.id;
+  });
+  
+
+
+
   return (
     <View style={styles.container}>
       <View>
@@ -36,6 +55,37 @@ function PageOrdonnancePlus({ route }) {
       <View style={styles.textContainer}>
         <Text style={styles.boldText}>Par : </Text>
         <Text style={styles.normalText}>{data.docteur}</Text>
+      </View>
+      <View>
+        <Text style={styles.contentTitle}>Contenu : </Text>
+        <FlatList
+          data={filtered_pres_med}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item, index }) => {
+            return (
+              <View style={styles.medicamentContainer}>
+                <Text style={styles.medicamentName}>💊 {MEDICAMENT[item.Id_medicament-1].drug_name}</Text>
+                <Text style={styles.medicamentQuantity}> - {item.quantity}</Text>
+              </View>
+            );
+          }
+          }
+
+        />
+        <FlatList
+          data={filtered_pres_serv}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.medicamentContainer}>
+                <Text style={styles.medicamentName}>🏥 {SERVICE[item.Id_service-1].service_name}</Text>
+                <Text style={styles.medicamentQuantity}> - {item.quantity}</Text>
+              </View>
+            );
+          }
+          }
+
+        />
       </View>
       </View>
     </View>
@@ -76,5 +126,29 @@ const styles = StyleSheet.create({
   normalText: {
     fontFamily: "cera-pro-medium",
     fontSize: 18,
+  },
+  medicamentContainer: {
+    marginTop: 5,
+    marginLeft: 40,
+    display: "flex",
+    flexDirection: "row",
+    
+  },
+  medicamentName: {
+    fontFamily: "cera-pro-medium",
+    fontSize: 18,
+  },
+  medicamentQuantity: {
+    fontFamily: "cera-pro-medium",
+    fontSize: 18,
+    
+  },
+  contentTitle: {
+    fontFamily: "cera-pro-black",
+    fontSize: 18,
+    marginLeft: 40,
+    marginTop: 20,
   }
+
+
 });
