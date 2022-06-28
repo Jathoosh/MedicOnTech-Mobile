@@ -10,11 +10,14 @@ function OrdonnanceItem({ data, page }) {
       >
         {page === "historique" && (
           <Text style={[styles.buttonTitle, { marginBottom: 10 }]}>
-            {data.dateDelivre}
+            {data.creation_date}
           </Text>
         )}
         {page === "ordonnance" && (
-          <Text style={styles.buttonTitle}>{data.personne}</Text>
+          <Text style={styles.buttonTitle}>
+            {data.patient_firstname}
+            {data.patient_lastname}
+          </Text>
         )}
 
         <View
@@ -32,14 +35,18 @@ function OrdonnanceItem({ data, page }) {
           <View style={styles.innerText}>
             {page === "ordonnance" && (
               <Text style={styles.buttonDesc}>
-                Délivré le : {data.dateDelivre}
+                Délivré le : {data.creation_date}
               </Text>
             )}
             {page === "historique" && (
-              <Text style={styles.buttonDesc}>{data.personne}</Text>
+              <Text style={styles.buttonDesc}>
+                {data.patient_lastname} {data.patient_firstname}
+              </Text>
             )}
 
-            <Text style={styles.buttonDesc}>Par : {data.docteur}</Text>
+            <Text style={styles.buttonDesc}>
+              Par : {data.doctor_firstname} {data.doctor_lastname}
+            </Text>
           </View>
         </View>
         {page === "ordonnance" ? (

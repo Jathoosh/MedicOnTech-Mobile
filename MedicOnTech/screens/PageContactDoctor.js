@@ -10,7 +10,7 @@ function PageContactDoctor() {
   const getMovies = async () => {
     try {
       const response = await axios.get(
-        "http://10.23.201.16:3000/api/motapp/doctor"
+        "http://10.13.200.168:3000/api/motapp/doctor"
       );
       const json = await response.data;
       setData(json.result);
