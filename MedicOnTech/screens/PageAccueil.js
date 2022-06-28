@@ -61,6 +61,10 @@ function PageAccueil({ navigation }) {
   function NavigateContactDoctor() {
     navigation.navigate("PageContactDoctor");
   }
+  function NaviagateContactUs() {
+    navigation.navigate("PageContactUs");
+    console.log("PageContactUs");
+  }
 
   return (
     <View style={styles.container}>
@@ -228,7 +232,7 @@ function PageAccueil({ navigation }) {
           </Pressable>
         </View>
         <View style={styles.containerSubButton}>
-          <Pressable android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
+          <Pressable onPress={NaviagateContactUs} android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
             <Text style={styles.buttonTitleSub}>Nous contacter</Text>
 
             <View

@@ -8,6 +8,9 @@ import PageAccueil from "./screens/PageAccueil";
 import PageOrdonnance from "./screens/PageOrdonnance";
 import PageHistorique from "./screens/PageHistorique";
 import PageContactDoctor from "./screens/PageContactDoctor";
+
+import PageContactUs from "./screens/PageContactUs";
+
 import Header from "./components/Header";
 
 const Stack = createNativeStackNavigator();
@@ -46,10 +49,7 @@ export default function App() {
             options={{
               headerBackVisible: false,
               headerTitle: () => (
-                <Header
-                  nameGoBack="PageAccueil"
-                  nameTitle="Contacter mon médecin"
-                />
+                <Header nameGoBack="PageAccueil" nameTitle="Contact médecin" />
               ),
             }}
           />
@@ -71,6 +71,17 @@ export default function App() {
               headerBackVisible: false,
               headerTitle: () => (
                 <Header nameGoBack="PageAccueil" nameTitle="Mon historique" />
+              ),
+            }}
+          />
+
+          <Stack.Screen
+            name="PageContactUs"
+            component={PageContactUs}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Nous contacter" />
               ),
             }}
           />
