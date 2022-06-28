@@ -1,10 +1,14 @@
 import { View, Pressable, Text, Image, StyleSheet } from "react-native";
-
+import { useNavigation } from "@react-navigation/native";
 function OrdonnanceItem({ data, page }) {
+  const navigation = useNavigation();
+  function NavigateOrdonnance() {
+    navigation.navigate("PageOrdonnancePlus", {data: data});
+  }
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={() => {}}
+        onPress={NavigateOrdonnance}
         android_ripple={{ color: "#FFFFFF" }}
         style={{ flex: 1, borderRadius: 10 }}
       >
