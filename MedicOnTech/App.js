@@ -46,7 +46,12 @@ export default function App() {
           <Stack.Screen
             name="PageContactDoctor"
             component={PageContactDoctor}
-            options={{ title: "Contacter mon médecin" }}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Contact médecin" />
+              ),
+            }}
           />
 
           <Stack.Screen
@@ -62,7 +67,12 @@ export default function App() {
           <Stack.Screen
             name="PageHistorique"
             component={PageHistorique}
-            options={{ title: "Mes Ordonnances" }}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Mon historique" />
+              ),
+            }}
           />
 
           <Stack.Screen
@@ -75,6 +85,7 @@ export default function App() {
               ),
             }}
           />
+
           <Stack.Screen
             name="PageOrdonnancePlus"
             component={PageOrdonnancePlus}
