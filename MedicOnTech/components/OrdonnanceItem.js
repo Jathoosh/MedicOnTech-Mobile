@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     height: heightPixel(40),
   },
   textDisplay: { color: "white", fontFamily: "cera-pro-medium", fontSize: fontPixel(18) },
-  image: { width: widthPixel(150), height: heightPixel(105), resizeMode: "contain", marginLeft: pixelSizeHorizontal(15) },
+  image: { width: widthPixel(150), height: heightPixel(105), resizeMode: "contain", marginLeft: pixelSizeHorizontal(15), marginBottom: pixelSizeVertical(10) },
   innerText: {
     paddingLeft: pixelSizeHorizontal(15),
     flex: 1,
