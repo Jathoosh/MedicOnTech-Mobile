@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   Text: {
     fontFamily: "cera-pro-black",
-    fontSize: 28,
+    fontSize: fontPixel(28),
   },
   buttonOption: {
     width: widthPixel(80),

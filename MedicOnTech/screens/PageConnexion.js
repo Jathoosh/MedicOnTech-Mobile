@@ -6,6 +6,15 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 
+import {
+  widthPixel,
+  heightPixel,
+  fontPixel,
+  pixelSizeVertical,
+  pixelSizeHorizontal,
+
+} from "../components/Sizer";
+
 import ConnexionInput from "../components/ConnexionInput";
 
 function PageConnexion({ navigation }) {
@@ -37,10 +46,11 @@ const styles = StyleSheet.create({
   containerImage: {
     alignItems: "center",
   },
+
   image: {
-    width: 175,
-    height: 250,
+    width: widthPixel(175),
+    height: heightPixel(250),
     resizeMode: "contain",
-    marginTop: 50,
+    marginTop: pixelSizeVertical(50),
   },
 });

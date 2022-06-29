@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   imageSocialNetwork: {
     width: widthPixel(64),
-    height: heightPixel(64),
+    height: widthPixel(64),
   },
 
       
