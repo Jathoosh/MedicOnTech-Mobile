@@ -40,6 +40,16 @@ const formatDate = (date) => {
   return string;
 };
 
+const shortenDrugName = (drugName) => {
+  var string = "";
+  var i = 0;
+  while (drugName[i] != "," && i < drugName.length) {
+    string += drugName[i];
+    i++;
+  }
+  return string;
+}
+
 function PageOrdonnancePlus({ route }) {
   const [isLoading, setLoading] = useState(true);
   const [otherData, setotherData] = useState([]);
@@ -47,7 +57,7 @@ function PageOrdonnancePlus({ route }) {
   const getPrescription = async (id) => {
     try {
       const response = await axios.get(
-        `http://10.13.200.168:3000/api/motapp/prescription/${id}`
+        `http://10.3.200.21:3000/api/motapp/prescription/${id}`
       );
       const json = await response.data;
       setotherData(json.result);
@@ -67,11 +77,8 @@ function PageOrdonnancePlus({ route }) {
   function renderPrescriptionDrugItem(itemData) {
     return (
       <View style={styles.medicamentContainer}>
-        <Text style={styles.medicamentName}>💊 {itemData.item.drug_name}</Text>
-        <Text style={styles.medicamentQuantity}>
-          {" "}
-          - {itemData.item.quantity}
-        </Text>
+        <Text style={styles.medicamentName}>💊 {shortenDrugName(itemData.item.drug_name)}</Text>
+        <Text style={styles.medicamentName}>        quantité : {itemData.item.quantity}</Text>
       </View>
     );
   }
@@ -86,11 +93,11 @@ function PageOrdonnancePlus({ route }) {
       </View>
       <View style={styles.imageContainer}>
         <Image
-          source={require("../assets/Code128-alphanumeric.jpg")}
+          source={{uri:"http://bwipjs-api.metafloor.com/?bcid=code39&text="+data.Id_Prescription+"&includetext"}}
           style={styles.image}
         />
       </View>
-      <View style={{ marginTop: 30 }}>
+      <View style={{ marginTop: heightPixel(30) }}>
         <View style={styles.textContainer}>
           <Text style={styles.boldText}>Délivré le : </Text>
           <Text style={styles.normalText}>
@@ -126,10 +133,10 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#FFFFFF" },
   name: {
     textAlign: "center",
-    fontSize: 34,
+    fontSize: fontPixel(34),
     fontFamily: "cera-pro-black",
     alignSelf: "center",
-    marginTop: 10,
+    marginTop: heightPixel(10),
   },
   image: {
     width: widthPixel(300),
@@ -137,42 +144,42 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   imageContainer: {
-    marginTop: 45,
+    marginTop: heightPixel(20),
     alignSelf: "center",
   },
   textContainer: {
-    marginTop: 5,
-    marginLeft: 40,
+    marginTop: heightPixel(5),
+    marginLeft: widthPixel(40),
     display: "flex",
     flexDirection: "row",
   },
   boldText: {
     fontFamily: "cera-pro-bold",
-    fontSize: 18,
+    fontSize: fontPixel(18),
   },
   normalText: {
     fontFamily: "cera-pro-medium",
-    fontSize: 18,
+    fontSize: fontPixel(18),
   },
   medicamentContainer: {
     flexWrap: "wrap",
-    marginTop: 5,
-    marginLeft: 40,
+    marginTop: heightPixel(5),
+    marginLeft: pixelSizeHorizontal(20),
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
   },
   medicamentName: {
     fontFamily: "cera-pro-medium",
-    fontSize: 18,
+    fontSize: fontPixel(18),
   },
   medicamentQuantity: {
     fontFamily: "cera-pro-medium",
-    fontSize: 18,
+    fontSize: fontPixel(18),
   },
   contentTitle: {
     fontFamily: "cera-pro-black",
-    fontSize: 18,
-    marginLeft: 40,
-    marginTop: 20,
+    fontSize: fontPixel(18),
+    marginLeft: widthPixel(40),
+    marginTop: heightPixel(20),
   },
 });

@@ -1,5 +1,37 @@
 import { View, Pressable, Text, Image, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+import {
+  widthPixel,
+  heightPixel,
+  fontPixel,
+  pixelSizeVertical,
+  pixelSizeHorizontal,
+} from "./Sizer";
+
+const months = [
+  "janv.",
+  "févr.",
+  "mars",
+  "avr.",
+  "mai",
+  "juin",
+  "juill.",
+  "août",
+  "sept.",
+  "oct.",
+  "nov.",
+  "déc.",
+];
+
+const formatDate = (date) => {
+  var tempDate = new Date(date);
+  var string = tempDate.getDay().toString();
+  string += " " + months[tempDate.getMonth()] + " ";
+  string += tempDate.getFullYear().toString();
+  return string;
+};
+
 function OrdonnanceItem({ data, page }) {
   const navigation = useNavigation();
   function NavigateOrdonnance() {
@@ -13,14 +45,13 @@ function OrdonnanceItem({ data, page }) {
         style={{ flex: 1, borderRadius: 10 }}
       >
         {page === "historique" && (
-          <Text style={[styles.buttonTitle, { marginBottom: 10 }]}>
+          <Text style={[styles.buttonTitle, { marginBottom: pixelSizeVertical(10) }]}>
             {data.creation_date}
           </Text>
         )}
         {page === "ordonnance" && (
           <Text style={styles.buttonTitle}>
-            {data.patient_firstname}
-            {data.patient_lastname}
+            {data.patient_firstname} {data.patient_lastname}
           </Text>
         )}
 
@@ -31,7 +62,7 @@ function OrdonnanceItem({ data, page }) {
         >
           {page === "ordonnance" && (
             <Image
-              source={require("../assets/code_barre.png")}
+            source={{uri:"http://bwipjs-api.metafloor.com/?bcid=code39&text="+data.Id_Prescription+"&includetext"}}
               style={styles.image}
             />
           )}
@@ -39,7 +70,7 @@ function OrdonnanceItem({ data, page }) {
           <View style={styles.innerText}>
             {page === "ordonnance" && (
               <Text style={styles.buttonDesc}>
-                Délivré le : {data.creation_date}
+                Délivré le : {"\n"}{formatDate(data.creation_date)}
               </Text>
             )}
             {page === "historique" && (
@@ -58,7 +89,7 @@ function OrdonnanceItem({ data, page }) {
             <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
           </View>
         ) : (
-          <View style={[styles.buttonDisplay, { marginTop: 20 }]}>
+          <View style={[styles.buttonDisplay, { marginTop: pixelSizeVertical(20) }]}>
             <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
           </View>
         )}
@@ -72,19 +103,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    margin: 20,
+    margin: pixelSizeVertical(20),
     backgroundColor: "#F3F3F3",
     borderRadius: 10,
   },
 
   buttonTitle: {
-    fontSize: 28,
+    fontSize: fontPixel(28),
     fontFamily: "cera-pro-black",
     alignSelf: "center",
-    marginTop: 10,
+    marginTop: pixelSizeVertical(10),
   },
   buttonDesc: {
-    fontSize: 18,
+    fontSize: fontPixel(18),
     fontFamily: "cera-pro-medium",
   },
   buttonDisplay: {
@@ -93,12 +124,12 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    height: 40,
+    height: heightPixel(40),
   },
-  textDisplay: { color: "white", fontFamily: "cera-pro-medium", fontSize: 18 },
-  image: { width: 150, height: 105, resizeMode: "contain", marginLeft: 15 },
+  textDisplay: { color: "white", fontFamily: "cera-pro-medium", fontSize: fontPixel(18) },
+  image: { width: widthPixel(150), height: heightPixel(105), resizeMode: "contain", marginLeft: pixelSizeHorizontal(15) },
   innerText: {
-    paddingLeft: 15,
+    paddingLeft: pixelSizeHorizontal(15),
     flex: 1,
     flexWrap: "nowrap",
     justifyContent: "space-evenly",
