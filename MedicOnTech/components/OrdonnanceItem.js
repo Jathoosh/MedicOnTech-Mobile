@@ -31,7 +31,13 @@ const formatDate = (date) => {
   string += tempDate.getFullYear().toString();
   return string;
 };
-
+const GenerateBarCodeNumber = (Id_Prescription) => {
+  var barcode = Id_Prescription.toString();
+  while (barcode.length < 12) {
+      barcode = "0" + barcode;
+  }
+  return "http://bwipjs-api.metafloor.com/?bcid=ean13&text=" + barcode+"&includetext";
+}
 function OrdonnanceItem({ data, page }) {
   const navigation = useNavigation();
   function NavigateOrdonnance() {
@@ -62,7 +68,7 @@ function OrdonnanceItem({ data, page }) {
         >
           {page === "ordonnance" && (
             <Image
-            source={{uri:"http://bwipjs-api.metafloor.com/?bcid=code39&text="+data.Id_Prescription+"&includetext"}}
+            source={{uri:GenerateBarCodeNumber(data.Id_Prescription)}}
               style={styles.image}
             />
           )}

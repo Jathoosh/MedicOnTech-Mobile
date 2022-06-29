@@ -50,7 +50,13 @@ const shortenDrugName = (drugName) => {
   }
   return string;
 }
-
+const GenerateBarCodeNumber = (prescription_ID) => {
+  var barcode = prescription_ID.toString();
+  while (barcode.length < 12) {
+      barcode = "0" + barcode;
+  }
+  return "http://bwipjs-api.metafloor.com/?bcid=ean13&text=" + barcode+"&includetext";
+}
 function PageOrdonnancePlus({ route }) {
   const [isLoading, setLoading] = useState(true);
   const [otherData, setotherData] = useState([]);
@@ -94,7 +100,7 @@ function PageOrdonnancePlus({ route }) {
       </View>
       <View style={styles.imageContainer}>
         <Image
-          source={{uri:"http://bwipjs-api.metafloor.com/?bcid=code39&text="+data.Id_Prescription+"&includetext"}}
+          source={{uri:GenerateBarCodeNumber(data.Id_Prescription)}}
           style={styles.image}
         />
       </View>
