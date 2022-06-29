@@ -1,10 +1,31 @@
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, ActivityIndicator } from "react-native";
 import OrdonnanceItem from "../components/OrdonnanceItem";
-import { DATA } from "../Models/data";
+import { URL } from "../Models/data";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+
 function PageHistorique() {
-  const displayHistorique = DATA.filter((dataItem) => {
-    return dataItem.personne.indexOf("Maxence ROBICHON") >= 0;
-  });
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  const getHistorique = async (id) => {
+    try {
+
+      const response = await axios.get(`${URL}/api/motapp/ordonnance/${id}`);
+
+      const json = await response.data;
+      setData(json.result);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getHistorique(8);
+  }, []);
 
   function renderHistoriqueItem(itemData) {
     return <OrdonnanceItem data={itemData.item} page={"historique"} />;
@@ -12,12 +33,16 @@ function PageHistorique() {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={displayHistorique}
-        keyExtractor={(item) => item.id}
-        renderItem={renderHistoriqueItem}
-        style={styles.list}
-      />
+      {isLoading ? (
+        <ActivityIndicator size="large" style={styles.loading} />
+      ) : (
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.Id_Prescription}
+          renderItem={renderHistoriqueItem}
+          style={styles.list}
+        />
+      )}
     </View>
   );
 }

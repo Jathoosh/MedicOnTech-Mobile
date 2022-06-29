@@ -3,8 +3,8 @@ class Medecin {
       this.id = id;
       this.personne = personne;
       this.idPersonne = idPersonne;
-        this.numero = numero;
-        this.email = email;
+      this.numero = numero;
+      this.email = email;
     }
   }
   

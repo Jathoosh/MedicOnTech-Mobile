@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import PageConnexion from "./screens/PageConnexion";
 import { useFonts } from "expo-font";
@@ -8,6 +8,10 @@ import PageAccueil from "./screens/PageAccueil";
 import PageOrdonnance from "./screens/PageOrdonnance";
 import PageHistorique from "./screens/PageHistorique";
 import PageContactDoctor from "./screens/PageContactDoctor";
+import PageOrdonnancePlus from "./screens/PageOrdonnancePlus";
+import PageContactUs from "./screens/PageContactUs";
+
+import Header from "./components/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,18 +46,55 @@ export default function App() {
           <Stack.Screen
             name="PageContactDoctor"
             component={PageContactDoctor}
-            options={{ title: "Contacter mon médecin" }}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Contact médecin" />
+              ),
+            }}
           />
 
           <Stack.Screen
             name="PageOrdonnance"
             component={PageOrdonnance}
-            options={{ title: "Mes ordonnances" }}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Mes ordonnances" />
+              ),
+            }}
           />
           <Stack.Screen
             name="PageHistorique"
             component={PageHistorique}
-            options={{ title: "Mes Ordonnances" }}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Mon historique" />
+              ),
+            }}
+          />
+
+          <Stack.Screen
+            name="PageContactUs"
+            component={PageContactUs}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Nous contacter" />
+              ),
+            }}
+          />
+
+          <Stack.Screen
+            name="PageOrdonnancePlus"
+            component={PageOrdonnancePlus}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageOrdonnance" nameTitle="Ordonnance" />
+              ),
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
