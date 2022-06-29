@@ -10,6 +10,7 @@ import {
   Linking,
 } from "react-native";
 
+import { theme } from "../Models/data";
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const widthBaseScale = SCREEN_WIDTH / 384;
@@ -259,6 +260,7 @@ export default PageAccueil;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: theme.background,
   },
   containerTitle: {
     position: "absolute",
@@ -268,7 +270,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     width: "100%",
     opacity: 0.8,
-    backgroundColor: "#d9d9d9",
+    backgroundColor: theme.headerBackground,
   },
   containerSubTitle: {
     marginTop: pixelSizeVertical(30),
@@ -287,6 +289,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: fontPixel(32),
     fontFamily: "cera-pro-black",
+    color: theme.text,
     marginTop: pixelSizeVertical(37),
     marginLeft: pixelSizeHorizontal(20),
     marginBottom: pixelSizeVertical(15),
@@ -294,6 +297,7 @@ const styles = StyleSheet.create({
   subTitle: {
     fontSize: fontPixel(28),
     fontFamily: "cera-pro-black",
+    color: theme.text,
     marginTop: pixelSizeVertical(0),
     marginLeft: pixelSizeHorizontal(0),
     marginBottom: pixelSizeVertical(0),
@@ -303,7 +307,7 @@ const styles = StyleSheet.create({
     marginBottom: pixelSizeVertical(9),
     height: heightPixel(120), //130 sur le figma
     width: "auto",
-    backgroundColor: "#2fb55e",
+    backgroundColor: theme.button,
     borderRadius: 10,
     overflow: "hidden",
   },
@@ -313,12 +317,13 @@ const styles = StyleSheet.create({
     marginBottom: pixelSizeVertical(9),
     height: heightPixel(50),
     width: "auto",
-    backgroundColor: "#d9d9d9",
+    backgroundColor: theme.subButton,
     borderRadius: 10,
   },
   buttonTitle: {
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
+    color: theme.text,
     marginLeft: pixelSizeHorizontal(12),
     marginTop: pixelSizeVertical(22),
     width: "80%",
@@ -326,6 +331,7 @@ const styles = StyleSheet.create({
   buttonTitleHist: {
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
+    color: theme.text,
     marginLeft: pixelSizeHorizontal(12),
     marginTop: pixelSizeVertical(22),
     width: "70%",
@@ -333,12 +339,14 @@ const styles = StyleSheet.create({
   buttonDesc: {
     fontSize: fontPixel(18),
     fontFamily: "cera-pro-light",
+    color: theme.text,
     marginLeft: pixelSizeHorizontal(12),
     width: "70%",
   },
   buttonTitleSub: {
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
+    color: theme.text,
     marginLeft: pixelSizeHorizontal(55),
     marginTop: pixelSizeVertical(10),
   },
