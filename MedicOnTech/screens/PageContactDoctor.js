@@ -3,6 +3,8 @@ import DoctorItem from "../components/DoctorItem";
 import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ID } from "../Models/data";
+
 function PageContactDoctor() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -10,7 +12,7 @@ function PageContactDoctor() {
   const getMovies = async () => {
     try {
 
-      const response = await axios.get(`${URL}/api/motapp/doctor`);
+      const response = await axios.get(`${URL}/api/motapp/doctor/${ID}`);
 
       const json = await response.data;
       setData(json.result);

@@ -10,6 +10,7 @@ import OrdonnanceItem from "../components/OrdonnanceItem";
 import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ID } from "../Models/data";
 function PageOrdonnance() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -29,7 +30,7 @@ function PageOrdonnance() {
   };
 
   useEffect(() => {
-    getOrdonnances(1);
+    getOrdonnances(ID);
   }, []);
 
   function renderOrdonnanceItem(itemData) {

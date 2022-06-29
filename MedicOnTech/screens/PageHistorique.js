@@ -3,6 +3,7 @@ import OrdonnanceItem from "../components/OrdonnanceItem";
 import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ID } from "../Models/data";
 
 
 function PageHistorique() {
@@ -24,7 +25,7 @@ function PageHistorique() {
   };
 
   useEffect(() => {
-    getHistorique(1);
+    getHistorique(ID);
   }, []);
 
   function renderHistoriqueItem(itemData) {
