@@ -15,6 +15,8 @@ function ConnexionInput(props) {
   const [enteredPasswordState, setEnteredPassword] = useState("");
   const [isStored, setIsStored] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const [isWrongPassword, setIsWrongPassword] = useState(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     async function fetchToken() {
@@ -74,7 +76,8 @@ function ConnexionInput(props) {
       validHandler();
     } else {
       console.log("Invalid authentification");
-      return <Text>Invalid password</Text>;
+      setCount(count + 1);
+      setIsWrongPassword(true);
     }
   }
   return (
@@ -118,13 +121,16 @@ function ConnexionInput(props) {
             autoCorrect={false}
             secureTextEntry={true}
             spellCheck={false}
-            style={[styles.textInput, { marginBottom: pixelSizeVertical(50) }]}
+            style={[styles.textInput, { marginBottom: pixelSizeVertical(20) }]}
             placeholder="Confirmer votre code pin"
             onChangeText={passwordInputHandler}
             value={enteredPasswordState}
           />
+          {isWrongPassword && (
+            <Text style={styles.textWrong}>Invalid password ({count})</Text>
+          )}
           <Pressable
-            style={styles.button}
+            style={[styles.button, { marginTop: pixelSizeVertical(20) }]}
             onPress={authenticateConnexionHandler}
           >
             <Text
@@ -155,6 +161,12 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     fontFamily: "cera-pro-medium",
     letterSpacing: 1,
+  },
+  textWrong: {
+    color: "red",
+    fontFamily: "cera-pro-medium",
+    fontSize: fontPixel(18),
+    alignSelf: "center",
   },
   text: {
     textAlign: "right",
