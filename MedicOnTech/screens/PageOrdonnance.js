@@ -29,7 +29,7 @@ function PageOrdonnance() {
   };
 
   useEffect(() => {
-    getOrdonnances(8);
+    getOrdonnances(1);
   }, []);
 
   function renderOrdonnanceItem(itemData) {

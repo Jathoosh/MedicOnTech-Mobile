@@ -24,7 +24,7 @@ function PageHistorique() {
   };
 
   useEffect(() => {
-    getHistorique(8);
+    getHistorique(1);
   }, []);
 
   function renderHistoriqueItem(itemData) {

@@ -139,5 +139,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: "nowrap",
     justifyContent: "space-evenly",
+    marginBottom: pixelSizeVertical(50),
   },
 });
