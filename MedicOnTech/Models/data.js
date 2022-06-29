@@ -5,7 +5,7 @@ import Ordonnance_medicament from "./ordonnance_medicament";
 import Service from "./service";
 import Medicament from "./medicament";
 
-
+export const URL = "http://10.3.200.21:3000";
 export const DATA = [
   new Ordonnance(1, "Maxence ROBICHON", 1, "2022-03-05", "Dr.Larouch"),
   new Ordonnance(2, "Guillaume Jacquet", 2, "2022-03-06", "Dr.Latouch"),
@@ -19,9 +19,21 @@ export const DATA = [
 
 export const DOCTOR = [
   new Medecin(1, "Maxence ROBICHON", 1, "", "maxence.robichon@efrei.net"),
-  new Medecin(2, "Guillaume Jacquet", 2, "0620886188", "guillaume.jacquet@efrei.net"),
+  new Medecin(
+    2,
+    "Guillaume Jacquet",
+    2,
+    "0620886188",
+    "guillaume.jacquet@efrei.net"
+  ),
   new Medecin(3, "Sylvain MIGEON", 3, "0699053164", "sylvain.migeon@efrei.net"),
-  new Medecin(4, "Jathoosh THAVARASA", 4, "0666066049", "jathoosh.thavarasa@efrei.net")
+  new Medecin(
+    4,
+    "Jathoosh THAVARASA",
+    4,
+    "0666066049",
+    "jathoosh.thavarasa@efrei.net"
+  ),
 ];
 
 export const ORDONNANCE_MEDICAMENT = [
@@ -57,5 +69,3 @@ export const MEDICAMENT = [
   new Medicament(6, "Toplexil", 10),
   new Medicament(7, "Diclofenac", 10),
 ];
-
-

@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet, ActivityIndicator } from "react-native";
 import DoctorItem from "../components/DoctorItem";
-import { URL } from "../App";
+import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 function PageContactDoctor() {
