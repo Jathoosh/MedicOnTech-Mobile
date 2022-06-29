@@ -9,7 +9,9 @@ function PageContactDoctor() {
 
   const getMovies = async () => {
     try {
+
       const response = await axios.get(`${URL}/api/motapp/doctor`);
+
       const json = await response.data;
       setData(json.result);
     } catch (error) {
