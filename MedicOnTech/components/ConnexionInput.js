@@ -12,6 +12,7 @@ import {
 
 function ConnexionInput(props) {
   const [enteredConnexionState, setEnteredConnexion] = useState("");
+  const [enteredPasswordState, setEnteredPassword] = useState("");
   const [isStored, setIsStored] = useState(false);
   const [isValid, setIsValid] = useState(false);
 
@@ -28,6 +29,9 @@ function ConnexionInput(props) {
 
   function connexionInputHandler(text) {
     setEnteredConnexion(text);
+  }
+  function passwordInputHandler(text) {
+    setEnteredPassword(text);
   }
 
   function validHandler() {
@@ -57,8 +61,21 @@ function ConnexionInput(props) {
   }
 
   async function authenticateConnexionHandler() {
-    await SecureStore.setItemAsync("token", enteredConnexionState);
-    validHandler();
+    if (
+      enteredConnexionState === enteredPasswordState &&
+      enteredConnexionState !== "" &&
+      enteredPasswordState !== "" &&
+      typeof enteredConnexionState === "string" &&
+      typeof enteredPasswordState === "string"
+    ) {
+      await SecureStore.setItemAsync("token", enteredConnexionState);
+      setEnteredConnexion("");
+      setEnteredPassword("");
+      validHandler();
+    } else {
+      console.log("Invalid authentification");
+      return <Text>Invalid password</Text>;
+    }
   }
   return (
     <View style={styles.encadres}>
@@ -96,6 +113,15 @@ function ConnexionInput(props) {
             placeholder="Saisir votre code pin"
             onChangeText={connexionInputHandler}
             value={enteredConnexionState}
+          />
+          <TextInput
+            autoCorrect={false}
+            secureTextEntry={true}
+            spellCheck={false}
+            style={[styles.textInput, { marginBottom: pixelSizeVertical(50) }]}
+            placeholder="Confirmer votre code pin"
+            onChangeText={passwordInputHandler}
+            value={enteredPasswordState}
           />
           <Pressable
             style={styles.button}
