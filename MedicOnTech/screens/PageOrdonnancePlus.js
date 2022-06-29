@@ -16,6 +16,7 @@ import {
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { URL } from "../App";
 
 const months = [
   "janv.",
@@ -46,9 +47,7 @@ function PageOrdonnancePlus({ route }) {
 
   const getPrescription = async (id) => {
     try {
-      const response = await axios.get(
-        `http://10.13.200.168:3000/api/motapp/prescription/${id}`
-      );
+      const response = await axios.get(`${URL}/api/motapp/prescription/${id}`);
       const json = await response.data;
       setotherData(json.result);
     } catch (error) {

@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet, ActivityIndicator } from "react-native";
 import DoctorItem from "../components/DoctorItem";
-import { DOCTOR } from "../Models/data";
+import { URL } from "../App";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 function PageContactDoctor() {
@@ -9,9 +9,7 @@ function PageContactDoctor() {
 
   const getMovies = async () => {
     try {
-      const response = await axios.get(
-        "http://10.13.200.168:3000/api/motapp/doctor"
-      );
+      const response = await axios.get(`${URL}/api/motapp/doctor`);
       const json = await response.data;
       setData(json.result);
     } catch (error) {

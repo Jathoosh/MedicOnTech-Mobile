@@ -14,6 +14,7 @@ import PageContactUs from "./screens/PageContactUs";
 import Header from "./components/Header";
 
 const Stack = createNativeStackNavigator();
+export const URL = "http://10.3.200.21:3000";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -96,8 +97,6 @@ export default function App() {
               ),
             }}
           />
-       
-
         </Stack.Navigator>
       </NavigationContainer>
     </>
