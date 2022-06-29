@@ -1,6 +1,6 @@
 import { View, StyleSheet, FlatList, ActivityIndicator } from "react-native";
 import OrdonnanceItem from "../components/OrdonnanceItem";
-import { DATA } from "../Models/data";
+import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 function PageHistorique() {
@@ -9,9 +9,9 @@ function PageHistorique() {
 
   const getHistorique = async (id) => {
     try {
-      const response = await axios.get(
-        `http://10.3.200.21:3000/api/motapp/ordonnance/${id}`
-      );
+
+      const response = await axios.get(`${URL}/api/motapp/ordonnance/${id}`);
+
       const json = await response.data;
       setData(json.result);
     } catch (error) {
