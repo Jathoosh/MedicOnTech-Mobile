@@ -16,7 +16,7 @@ import {
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { URL } from "../App";
+import { URL } from "../Models/data";
 
 const months = [
   "janv.",

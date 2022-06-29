@@ -5,8 +5,9 @@ import {
   Text,
   ActivityIndicator,
 } from "react-native";
+
 import OrdonnanceItem from "../components/OrdonnanceItem";
-import { URL } from "../App";
+import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 function PageOrdonnance() {
