@@ -52,7 +52,7 @@ function OrdonnanceItem({ data, page }) {
       >
         {page === "historique" && (
           <Text style={[styles.buttonTitle, { marginBottom: pixelSizeVertical(10) }]}>
-            {data.creation_date}
+            {formatDate(data.creation_date)}
           </Text>
         )}
         {page === "ordonnance" && (
