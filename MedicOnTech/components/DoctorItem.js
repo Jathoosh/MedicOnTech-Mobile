@@ -11,8 +11,7 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
+
 } from "./Sizer";
 
 function OrdonnanceItem({ data }) {
@@ -71,10 +70,10 @@ export default OrdonnanceItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: pixelSizeVertical(10),
+    margin: heightPixel(10),
     backgroundColor: "#f3f3f3",
     borderRadius: 10,
-    padding: pixelSizeVertical(10),
+    padding: heightPixel(10),
   },
 
   buttonTitle: {
@@ -88,14 +87,14 @@ const styles = StyleSheet.create({
   buttonDesc: {
     fontSize: fontPixel(18),
     fontFamily: "cera-pro-light",
-    marginTop: pixelSizeVertical(5),
+    marginTop: heightPixel(5),
     width: "100%",
   },
   buttonOption: {
     display: "flex",
     flexDirection: "row",
-    marginTop: pixelSizeVertical(10),
-    padding: pixelSizeVertical(10),
+    marginTop: heightPixel(10),
+    padding: heightPixel(10),
     backgroundColor: "#1e4edd",
     borderRadius: 13,
   },
@@ -107,7 +106,7 @@ const styles = StyleSheet.create({
   buttonIcon: {
     width: widthPixel(25),
     height: heightPixel(25),
-    marginRight: pixelSizeHorizontal(10),
-    marginLeft: pixelSizeHorizontal(2),
+    marginRight: widthPixel(10),
+    marginLeft: widthPixel(2),
   },
 });

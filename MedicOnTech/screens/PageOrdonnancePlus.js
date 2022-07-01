@@ -10,8 +10,6 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
 } from "../components/Sizer";
 
 import React, { useEffect, useState } from "react";
@@ -171,7 +169,7 @@ const styles = StyleSheet.create({
   medicamentContainer: {
     flexWrap: "wrap",
     marginTop: heightPixel(5),
-    marginLeft: pixelSizeHorizontal(20),
+    marginLeft: widthPixel(20),
     display: "flex",
     flexDirection: "column",
   },

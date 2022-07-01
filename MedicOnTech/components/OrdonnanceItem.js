@@ -5,8 +5,6 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
 } from "./Sizer";
 
 const months = [
@@ -51,7 +49,7 @@ function OrdonnanceItem({ data, page }) {
         style={{ flex: 1, borderRadius: 10 }}
       >
         {page === "historique" && (
-          <Text style={[styles.buttonTitle, { marginBottom: pixelSizeVertical(10) }]}>
+          <Text style={[styles.buttonTitle, { marginBottom: heightPixel(10) }]}>
             {formatDate(data.creation_date)}
           </Text>
         )}
@@ -95,7 +93,7 @@ function OrdonnanceItem({ data, page }) {
             <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
           </View>
         ) : (
-          <View style={[styles.buttonDisplay, { marginTop: pixelSizeVertical(20) }]}>
+          <View style={[styles.buttonDisplay, { marginTop: heightPixel(20) }]}>
             <Text style={styles.textDisplay}>Afficher l'ordonnance</Text>
           </View>
         )}
@@ -109,7 +107,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    margin: pixelSizeVertical(20),
+    margin: heightPixel(20),
     backgroundColor: "#F3F3F3",
     borderRadius: 10,
   },
@@ -118,7 +116,7 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(28),
     fontFamily: "cera-pro-black",
     alignSelf: "center",
-    marginTop: pixelSizeVertical(10),
+    marginTop: heightPixel(10),
   },
   buttonDesc: {
     fontSize: fontPixel(18),
@@ -133,12 +131,12 @@ const styles = StyleSheet.create({
     height: heightPixel(40),
   },
   textDisplay: { color: "white", fontFamily: "cera-pro-medium", fontSize: fontPixel(18) },
-  image: { width: widthPixel(150), height: heightPixel(105), resizeMode: "contain", marginLeft: pixelSizeHorizontal(15) },
+  image: { width: widthPixel(150), height: heightPixel(105), resizeMode: "contain", marginLeft: widthPixel(15), marginBottom: heightPixel(10), },
   innerText: {
-    paddingLeft: pixelSizeHorizontal(15),
+    paddingLeft: widthPixel(15),
     flex: 1,
     flexWrap: "nowrap",
     justifyContent: "space-evenly",
-    marginBottom: pixelSizeVertical(50),
+    
   },
 });

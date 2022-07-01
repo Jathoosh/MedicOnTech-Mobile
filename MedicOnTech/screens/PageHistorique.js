@@ -3,6 +3,7 @@ import OrdonnanceItem from "../components/OrdonnanceItem";
 import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ID } from "../Models/data";
 
 
 function PageHistorique() {
@@ -12,7 +13,7 @@ function PageHistorique() {
   const getHistorique = async (id) => {
     try {
 
-      const response = await axios.get(`${URL}/api/motapp/ordonnance/${id}`);
+      const response = await axios.get(`${URL}/api/motapp/historique/${id}`);
 
       const json = await response.data;
       setData(json.result);
@@ -24,7 +25,7 @@ function PageHistorique() {
   };
 
   useEffect(() => {
-    getHistorique(1);
+    getHistorique(ID);
   }, []);
 
   function renderHistoriqueItem(itemData) {
