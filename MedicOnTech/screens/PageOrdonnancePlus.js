@@ -124,6 +124,7 @@ function PageOrdonnancePlus({ route }) {
               data={otherData}
               keyExtractor={(item) => item.Id_Drug}
               renderItem={renderPrescriptionDrugItem}
+              style={styles.flatList}
             />
           )}
         </View>
@@ -186,5 +187,8 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(18),
     marginLeft: widthPixel(40),
     marginTop: heightPixel(20),
+  },
+  flatList: {
+    height: heightPixel(700),
   },
 });
