@@ -11,44 +11,12 @@ import {
 } from "react-native";
 
 import { theme } from "../Models/data";
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
-const widthBaseScale = SCREEN_WIDTH / 384;
-const heightBaseScale = SCREEN_HEIGHT / 816;
-
-function normalize(size, based = "width") {
-  const newSize =
-    based === "height" ? size * heightBaseScale : size * widthBaseScale;
-  return Math.round(PixelRatio.roundToNearestPixel(newSize));
-}
-
-//for width pixel
-const widthPixel = (size) => {
-  return normalize(size, "width");
-};
-//for height pixel
-const heightPixel = (size) => {
-  return normalize(size, "height");
-};
-//for font pixel
-const fontPixel = (size) => {
-  return heightPixel(size);
-};
-//for Margin and Padding vertical pixel
-const pixelSizeVertical = (size) => {
-  return heightPixel(size);
-};
-//for Margin and Padding horizontal pixel
-const pixelSizeHorizontal = (size) => {
-  return widthPixel(size);
-};
-export {
+import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
-};
+} from "../components/Sizer";
 
 const url = "https://www.google.fr/maps/search/pharmacie";
 
@@ -75,7 +43,7 @@ function PageAccueil({ navigation }) {
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
-          marginTop: pixelSizeVertical(100),
+          marginTop: heightPixel(100),
         }}
       >
         <View style={styles.containerImage}>
@@ -214,7 +182,7 @@ function PageAccueil({ navigation }) {
             </Pressable>
           </View>
         </View>
-        <View style={{ marginTop: pixelSizeVertical(15) }} />
+        <View style={{ marginTop: heightPixel(15) }} />
         <View style={styles.containerSubButton}>
           <Pressable android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
             <Text style={styles.buttonTitleSub}>Paramètres</Text>
@@ -273,11 +241,11 @@ const styles = StyleSheet.create({
     backgroundColor: theme.headerBackground,
   },
   containerSubTitle: {
-    marginTop: pixelSizeVertical(30),
-    marginLeft: pixelSizeHorizontal(28),
+    marginTop: heightPixel(30),
+    marginLeft: widthPixel(28),
   },
   containerImage: {
-    marginTop: pixelSizeVertical(30),
+    marginTop: heightPixel(30),
     height: heightPixel(150),
     alignItems: "center",
   },
@@ -290,21 +258,21 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(32),
     fontFamily: "cera-pro-black",
     color: theme.text,
-    marginTop: pixelSizeVertical(37),
-    marginLeft: pixelSizeHorizontal(20),
-    marginBottom: pixelSizeVertical(15),
+    marginTop: heightPixel(37),
+    marginLeft: widthPixel(20),
+    marginBottom: heightPixel(15),
   },
   subTitle: {
     fontSize: fontPixel(28),
     fontFamily: "cera-pro-black",
     color: theme.text,
-    marginTop: pixelSizeVertical(0),
-    marginLeft: pixelSizeHorizontal(0),
-    marginBottom: pixelSizeVertical(0),
+    marginTop: heightPixel(0),
+    marginLeft: widthPixel(0),
+    marginBottom: heightPixel(0),
   },
   containerButton: {
-    marginHorizontal: pixelSizeHorizontal(15),
-    marginBottom: pixelSizeVertical(9),
+    marginHorizontal: widthPixel(15),
+    marginBottom: heightPixel(9),
     height: heightPixel(120), //130 sur le figma
     width: "auto",
     backgroundColor: theme.button,
@@ -313,8 +281,8 @@ const styles = StyleSheet.create({
   },
 
   containerSubButton: {
-    marginHorizontal: pixelSizeHorizontal(15),
-    marginBottom: pixelSizeVertical(9),
+    marginHorizontal: widthPixel(15),
+    marginBottom: heightPixel(9),
     height: heightPixel(50),
     width: "auto",
     backgroundColor: theme.subButton,
@@ -324,31 +292,31 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
     color: theme.text,
-    marginLeft: pixelSizeHorizontal(12),
-    marginTop: pixelSizeVertical(22),
+    marginLeft: widthPixel(12),
+    marginTop: heightPixel(22),
     width: "80%",
   },
   buttonTitleHist: {
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
     color: theme.text,
-    marginLeft: pixelSizeHorizontal(12),
-    marginTop: pixelSizeVertical(22),
+    marginLeft: widthPixel(12),
+    marginTop: heightPixel(22),
     width: "70%",
   },
   buttonDesc: {
     fontSize: fontPixel(18),
     fontFamily: "cera-pro-light",
     color: theme.text,
-    marginLeft: pixelSizeHorizontal(12),
+    marginLeft: widthPixel(12),
     width: "70%",
   },
   buttonTitleSub: {
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
     color: theme.text,
-    marginLeft: pixelSizeHorizontal(55),
-    marginTop: pixelSizeVertical(10),
+    marginLeft: widthPixel(55),
+    marginTop: heightPixel(10),
   },
   containerScroll: {
     width: "100%",

@@ -10,8 +10,7 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
+
 
 } from "../components/Sizer";
 
@@ -51,6 +50,6 @@ const styles = StyleSheet.create({
     width: widthPixel(175),
     height: heightPixel(250),
     resizeMode: "contain",
-    marginTop: pixelSizeVertical(50),
+    marginTop: heightPixel(50),
   },
 });

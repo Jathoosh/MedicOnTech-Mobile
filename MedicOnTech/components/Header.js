@@ -4,8 +4,7 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
+
 
 } from "./Sizer";
 import { useNavigation } from "@react-navigation/native";
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(20),
     fontFamily: "cera-pro-medium",
     color: "#ffffff",
-    padding: pixelSizeVertical(0),
+    padding: heightPixel(0),
   },
 
 });

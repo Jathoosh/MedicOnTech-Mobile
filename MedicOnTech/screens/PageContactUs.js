@@ -5,8 +5,7 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
+
 
 } from "../components/Sizer";
 
@@ -16,7 +15,7 @@ function PageContactUs() {
   return (
     <View style={styles.container}>
       
-      <View style={{marginTop: pixelSizeVertical(110)}}>
+      <View style={{marginTop: heightPixel(40)}}>
       <View style={styles.buttonOptionViewBlue}>
         <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {Linking.openURL("mailto:team.medicontech@gmail.com")}}>
           <Image source={require("../assets/letter-white.png")} style={styles.image}/>
@@ -66,29 +65,29 @@ export default PageContactUs;
 
 const styles = StyleSheet.create({
   buttonOption: {
-    padding: pixelSizeVertical(5),
+    padding: heightPixel(5),
     borderless: "false",
     display: "flex", 
     flexDirection: "row",
-    padding: pixelSizeHorizontal(12),
+    padding: widthPixel(12),
     
     
 
   },
   buttonOptionViewBlue:{
-    marginTop: pixelSizeVertical(15),
+    marginTop: heightPixel(15),
     backgroundColor: "#1e4edd",
     borderRadius: 20, 
     overflow: 'hidden',
-    width: pixelSizeHorizontal(340),
+    width: widthPixel(340),
     alignSelf: "center",
   },
   buttonOptionViewGray:{
-    marginTop: pixelSizeVertical(15),
+    marginTop: heightPixel(15),
     backgroundColor: "#d9d9d9",
     borderRadius: 20, 
     overflow: 'hidden',
-    width: pixelSizeHorizontal(340),
+    width: widthPixel(340),
     alignSelf: "center",
   },
   buttonOptionText: {
@@ -96,16 +95,16 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
     color: "#ffffff",
-    padding: pixelSizeVertical(0),
-    marginLeft: pixelSizeHorizontal(10),
+    padding: heightPixel(0),
+    marginLeft: widthPixel(10),
   },
   buttonOptionTextBlack: {
     width: "100%",
     fontSize: fontPixel(22),
     fontFamily: "cera-pro-medium",
     color: "#000000",
-    padding: pixelSizeVertical(0),
-    marginLeft: pixelSizeHorizontal(10),
+    padding: heightPixel(0),
+    marginLeft: widthPixel(10),
   },
   image:{
     width: widthPixel(30),
@@ -115,17 +114,17 @@ const styles = StyleSheet.create({
   subTitle: {
     fontSize: fontPixel(28),
     fontFamily: "cera-pro-black",
-    marginTop: pixelSizeVertical(0),
-    marginLeft: pixelSizeHorizontal(0),
-    marginBottom: pixelSizeVertical(0),
+    marginTop: heightPixel(0),
+    marginLeft: widthPixel(0),
+    marginBottom: heightPixel(0),
   },
 
   containerSubTitle: {
-    marginTop: pixelSizeVertical(30),
-    marginLeft: pixelSizeHorizontal(20),
+    marginTop: heightPixel(30),
+    marginLeft: widthPixel(20),
   },
   containerSocialNetwork: {
-    marginTop: pixelSizeVertical(20),
+    marginTop: heightPixel(20),
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignSelf: "center",
@@ -133,7 +132,7 @@ const styles = StyleSheet.create({
   containerSocialNetworkItem: {
     width: widthPixel(64),
     height: heightPixel(64),
-    margin: pixelSizeHorizontal(10),
+    margin: widthPixel(10),
 
   },
   imageSocialNetwork: {

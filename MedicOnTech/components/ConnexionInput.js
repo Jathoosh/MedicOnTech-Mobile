@@ -7,8 +7,7 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
+
 
 } from "../components/Sizer";
 
@@ -116,7 +115,7 @@ function ConnexionInput(props) {
             autoCorrect={false}
             secureTextEntry={true}
             spellCheck={false}
-            style={[styles.textInput, { marginBottom: pixelSizeVertical(50) }]}
+            style={[styles.textInput, { marginBottom: heightPixel(50) }]}
             placeholder="Saisir votre code pin"
             onChangeText={connexionInputHandler}
             value={enteredConnexionState}
@@ -125,7 +124,7 @@ function ConnexionInput(props) {
             autoCorrect={false}
             secureTextEntry={true}
             spellCheck={false}
-            style={[styles.textInput, { marginBottom: pixelSizeVertical(20) }]}
+            style={[styles.textInput, { marginBottom: heightPixel(20) }]}
             placeholder="Confirmer votre code pin"
             onChangeText={passwordInputHandler}
             value={enteredPasswordState}
@@ -134,7 +133,7 @@ function ConnexionInput(props) {
             <Text style={styles.textWrong}>Invalid password ({count})</Text>
           )}
           <Pressable
-            style={[styles.button, { marginTop: pixelSizeVertical(20) }]}
+            style={[styles.button, { marginTop: heightPixel(20) }]}
             onPress={authenticateConnexionHandler}
           >
             <Text
@@ -155,15 +154,15 @@ const styles = StyleSheet.create({
   encadres: {
     alignItems: "stretch",
     flex: 1,
-    paddingHorizontal: pixelSizeHorizontal(15),
+    paddingHorizontal: widthPixel(15),
   },
   textInput: {
     alignItems: "stretch",
     height: heightPixel(54),
     backgroundColor: "#D9D9D9",
-    paddingLeft: pixelSizeHorizontal(15),
+    paddingLeft: widthPixel(15),
     borderRadius: 10,
-    marginBottom: pixelSizeVertical(12),
+    marginBottom: heightPixel(12),
     fontFamily: "cera-pro-medium",
     letterSpacing: 1,
   },
@@ -175,8 +174,8 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "right",
-    marginBottom: pixelSizeVertical(38),
-    paddingRight: pixelSizeHorizontal(10),
+    marginBottom: heightPixel(38),
+    paddingRight: widthPixel(10),
     fontFamily: "cera-pro-light",
   },
   textConnexion: {
