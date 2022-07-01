@@ -6,6 +6,12 @@ import {
   ActivityIndicator,
 } from "react-native";
 
+import {
+  widthPixel,
+  heightPixel,
+  fontPixel
+} from "../components/Sizer";
+
 import OrdonnanceItem from "../components/OrdonnanceItem";
 import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
