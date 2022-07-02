@@ -8,6 +8,7 @@ import {
 
 } from "./Sizer";
 import { useNavigation } from "@react-navigation/native";
+import { theme } from "../Models/data";
 
 function Header(props) {
   const navigation = useNavigation();
@@ -36,12 +37,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
-    borderWidth: 1,
-    borderColor: "#ffffff",
+
   },
   Text: {
     fontFamily: "cera-pro-black",
     fontSize: fontPixel(28),
+    color: theme.text,
   },
   buttonOption: {
     width: widthPixel(80),

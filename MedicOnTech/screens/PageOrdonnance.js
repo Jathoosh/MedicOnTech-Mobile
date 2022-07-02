@@ -20,6 +20,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ID } from "../Models/data";
 
+import { theme } from "../Models/data";
+
 function PageOrdonnance() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -57,6 +59,7 @@ function PageOrdonnance() {
           <TextInput
             style={styles.textInput}
             placeholder="Rechercher une ordonnance"
+            placeholderTextColor={theme.text}
             onChangeText={(text) => {
               setSearch(data.filter( item => item.patient_firstname.includes(text) 
               || item.patient_lastname.includes(text) 
@@ -87,7 +90,7 @@ function PageOrdonnance() {
 export default PageOrdonnance;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#FFFFFF" },
+  container: { flex: 1, backgroundColor: theme.background },
   loading: {
     flex: 1,
     justifyContent: "center",
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
   textInput: {
     alignItems: "stretch",
     height: heightPixel(54),
-    backgroundColor: "#D9D9D9",
+    backgroundColor: theme.subButton,
     paddingLeft: widthPixel(15),
     borderRadius: 10,
     marginLeft: widthPixel(20),
