@@ -10,6 +10,7 @@ import PageHistorique from "./screens/PageHistorique";
 import PageContactDoctor from "./screens/PageContactDoctor";
 import PageOrdonnancePlus from "./screens/PageOrdonnancePlus";
 import PageContactUs from "./screens/PageContactUs";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Header from "./components/Header";
 
