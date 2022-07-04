@@ -21,6 +21,7 @@ npm install @react-navigation/stack
 expo install expo-font
 expo install expo-app-loading
 npm install express --save
-npm install mysqli --save
-npm install body-parser --save
+npm install --save @react-native-community/netinfo
+expo install expo-sqlite
+npm install react-native-inappbrowser-reborn --save
 ```

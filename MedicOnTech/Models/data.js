@@ -5,7 +5,7 @@ import Ordonnance_medicament from "./ordonnance_medicament";
 import Service from "./service";
 import Medicament from "./medicament";
 
-export const URL = "http://10.13.216.147:3000";
+export const URL = "http://192.168.1.124:3000";
 export const DATA = [
   new Ordonnance(1, "Maxence ROBICHON", 1, "2022-03-05", "Dr.Larouch"),
   new Ordonnance(2, "Guillaume Jacquet", 2, "2022-03-06", "Dr.Latouch"),

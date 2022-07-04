@@ -9,7 +9,13 @@ import {
   Dimensions,
   Linking,
 } from "react-native";
-
+import NetInfo from "@react-native-community/netinfo";
+import { useEffect } from "react";
+import {
+  createTable,
+  getDataDoctors,
+  setDataDoctors,
+} from "../server/Database";
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const widthBaseScale = SCREEN_WIDTH / 384;
@@ -66,6 +72,26 @@ function PageAccueil({ navigation }) {
     console.log("PageContactUs");
   }
 
+  function Internet() {
+    NetInfo.addEventListener((state) => {
+      console.log("Connection type", state.type);
+      console.log("Is connected?", state.isConnected);
+      console.log("Is reachable", state.isInternetReachable);
+    });
+  }
+
+  const item = {
+    Id_Person: 1,
+    first_name: "John",
+    last_name: "Doe",
+    email_address: "azdza",
+    phone: "azdaz",
+  };
+  useEffect(() => {
+    createTable();
+    getDataDoctors();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
@@ -119,7 +145,7 @@ function PageAccueil({ navigation }) {
 
           <View style={styles.containerButton}>
             <Pressable
-              onPress={NavigateHistorique}
+              onPress={setDataDoctors}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >
@@ -232,7 +258,11 @@ function PageAccueil({ navigation }) {
           </Pressable>
         </View>
         <View style={styles.containerSubButton}>
-          <Pressable onPress={NaviagateContactUs} android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
+          <Pressable
+            onPress={NaviagateContactUs}
+            android_ripple={{ color: "#FFFFFF" }}
+            style={{ flex: 1 }}
+          >
             <Text style={styles.buttonTitleSub}>Nous contacter</Text>
 
             <View
