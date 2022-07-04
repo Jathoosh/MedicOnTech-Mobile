@@ -14,11 +14,17 @@ import {
 
 } from "../components/Sizer";
 
+
+
 import ConnexionInput from "../components/ConnexionInput";
+
+
+
 
 function PageConnexion({ navigation }) {
   async function addConnexionHandler(isValid) {
     if (isValid === true) {
+
       navigation.replace("PageAccueil");
     }
   }
