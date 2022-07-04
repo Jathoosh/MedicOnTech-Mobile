@@ -23,4 +23,5 @@ expo install expo-app-loading
 npm install express --save
 npm install mysqli --save
 npm install body-parser --save
+expo install @react-native-async-storage/async-storage
 ```
