@@ -6,7 +6,7 @@ import Service from "./service";
 import Medicament from "./medicament";
 import { Appearance } from 'react-native';
 import { useState } from "react";
-export const URL = "http://10.13.216.147:3000";
+export const URL = "http://10.3.217.17:3000";
 export const ID = 4;
 export const DATA = [
   new Ordonnance(1, "Maxence ROBICHON", 1, "2022-03-05", "Dr.Larouch"),
