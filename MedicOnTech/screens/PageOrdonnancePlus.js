@@ -42,10 +42,11 @@ const formatDate = (date) => {
 const shortenDrugName = (drugName) => {
   var string = "";
   var i = 0;
-  while (drugName[i] != "," && i < drugName.length) {
+  while ((drugName[i>0?i-1:0] != "," || drugName[i] != " ") && i < drugName.length && drugName[i] != "+") {
     string += drugName[i];
     i++;
   }
+  string = string.slice(0, -1);
   return string;
 }
 const GenerateBarCodeNumber = (prescription_ID) => {
