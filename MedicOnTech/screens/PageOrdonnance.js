@@ -39,6 +39,7 @@ function PageOrdonnance() {
   const getOrdonnances = async (id) => {
     getDataOrdonnance()
       .then((data) => {
+        setData(data);
         setSearch(data);
         console.log(data);
       })
@@ -57,6 +58,7 @@ function PageOrdonnance() {
             updateDataOrdonnace(element);
           }
         });
+        setData(json);
         setSearch(json);
       }
     } catch (error) {

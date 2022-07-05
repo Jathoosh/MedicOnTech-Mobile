@@ -29,6 +29,7 @@ function PageHistorique() {
   const getHistorique = async (id) => {
     getDataHistorique()
       .then((data) => {
+        setData(data);
         setSearch(data);
         console.log(data);
       })
@@ -47,6 +48,7 @@ function PageHistorique() {
             updateDataHistorique(element);
           }
         });
+        setData(json);
         setSearch(json);
       }
     } catch (error) {
