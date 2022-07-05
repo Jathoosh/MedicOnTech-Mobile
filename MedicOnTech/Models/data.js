@@ -4,8 +4,12 @@ import Ordonnance_service from "./ordonnance_service";
 import Ordonnance_medicament from "./ordonnance_medicament";
 import Service from "./service";
 import Medicament from "./medicament";
+import { Appearance } from 'react-native';
+import { useState } from "react";
 
-export const URL = "http://192.168.230.100:3030";
+export const URL = "http://10.23.216.41:3030";
+export const ID = 12;
+
 export const DATA = [
   new Ordonnance(1, "Maxence ROBICHON", 1, "2022-03-05", "Dr.Larouch"),
   new Ordonnance(2, "Guillaume Jacquet", 2, "2022-03-06", "Dr.Latouch"),
@@ -69,3 +73,32 @@ export const MEDICAMENT = [
   new Medicament(6, "Toplexil", 10),
   new Medicament(7, "Diclofenac", 10),
 ];
+
+export const dark_theme = {
+  background: "#2C2F34",
+  headerBackground: "#1A1C1F",
+  text: "#ffffff",
+  button: "#006D57",
+  subButton: "#565656",
+};
+
+export const light_theme = {
+  background: "#ffffff",
+  headerBackground: "#d9d9d9",
+  text: "#000000",
+  button: "#2FB55E",
+  subButton: "#d9d9d9",
+};
+
+
+
+export var theme;
+const colorScheme = Appearance.getColorScheme();
+if (colorScheme === 'dark') {
+  theme = dark_theme;
+} else {
+  theme = light_theme;
+}
+
+
+

@@ -9,6 +9,7 @@ import {
   updateDataDoctors,
 } from "../server/Database";
 import { useNetInfo } from "@react-native-community/netinfo";
+import { ID } from "../Models/data";
 
 function PageContactDoctor() {
   const [isLoading, setLoading] = useState(true);

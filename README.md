@@ -24,4 +24,8 @@ npm install express --save
 npm install --save @react-native-community/netinfo
 expo install expo-sqlite
 npm install react-native-inappbrowser-reborn --save
+npm install mysqli --save
+npm install body-parser --save
+expo install @react-native-async-storage/async-storage
+npm install react-native-select-dropdown
 ```

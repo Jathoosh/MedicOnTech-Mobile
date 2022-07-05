@@ -10,16 +10,21 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
+
 
 } from "../components/Sizer";
 
+
+
 import ConnexionInput from "../components/ConnexionInput";
+
+
+
 
 function PageConnexion({ navigation }) {
   async function addConnexionHandler(isValid) {
     if (isValid === true) {
+
       navigation.replace("PageAccueil");
     }
   }
@@ -51,6 +56,6 @@ const styles = StyleSheet.create({
     width: widthPixel(175),
     height: heightPixel(250),
     resizeMode: "contain",
-    marginTop: pixelSizeVertical(50),
+    marginTop: heightPixel(50),
   },
 });

@@ -23,18 +23,10 @@ const heightPixel = (size) => {
 const fontPixel = (size) => {
   return heightPixel(size);
 };
-//for Margin and Padding vertical pixel
-const pixelSizeVertical = (size) => {
-  return heightPixel(size);
-};
-//for Margin and Padding horizontal pixel
-const pixelSizeHorizontal = (size) => {
-  return widthPixel(size);
-};
+
 export {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
+
 };

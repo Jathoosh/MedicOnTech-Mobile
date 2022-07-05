@@ -10,10 +10,14 @@ import PageHistorique from "./screens/PageHistorique";
 import PageContactDoctor from "./screens/PageContactDoctor";
 import PageOrdonnancePlus from "./screens/PageOrdonnancePlus";
 import PageContactUs from "./screens/PageContactUs";
+import PageParametres from "./screens/PageParametres";
 
 import Header from "./components/Header";
 
+import { theme } from "./Models/data";
 const Stack = createNativeStackNavigator();
+
+
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,6 +28,7 @@ export default function App() {
     "cera-pro-bold": require("./assets/fonts/Cera-Pro-Bold.ttf"),
     "cera-pro-black": require("./assets/fonts/Cera-Pro-Black.ttf"),
   });
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
@@ -51,6 +56,9 @@ export default function App() {
               headerTitle: () => (
                 <Header nameGoBack="PageAccueil" nameTitle="Contact médecin" />
               ),
+              headerStyle: {
+                backgroundColor: theme.headerBackground,
+              },
             }}
           />
 
@@ -62,6 +70,9 @@ export default function App() {
               headerTitle: () => (
                 <Header nameGoBack="PageAccueil" nameTitle="Mes ordonnances" />
               ),
+              headerStyle: {
+                backgroundColor: theme.headerBackground,
+              },
             }}
           />
           <Stack.Screen
@@ -72,6 +83,9 @@ export default function App() {
               headerTitle: () => (
                 <Header nameGoBack="PageAccueil" nameTitle="Mon historique" />
               ),
+              headerStyle: {
+                backgroundColor: theme.headerBackground,
+              },
             }}
           />
 
@@ -83,6 +97,9 @@ export default function App() {
               headerTitle: () => (
                 <Header nameGoBack="PageAccueil" nameTitle="Nous contacter" />
               ),
+              headerStyle: {
+                backgroundColor: theme.headerBackground,
+              },
             }}
           />
 
@@ -94,6 +111,22 @@ export default function App() {
               headerTitle: () => (
                 <Header nameGoBack="PageOrdonnance" nameTitle="Ordonnance" />
               ),
+              headerStyle: {
+                backgroundColor: theme.headerBackground,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="PageParametres"
+            component={PageParametres}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageAccueil" nameTitle="Paramètres" />
+              ),
+              headerStyle: {
+                backgroundColor: theme.headerBackground,
+              },
             }}
           />
         </Stack.Navigator>

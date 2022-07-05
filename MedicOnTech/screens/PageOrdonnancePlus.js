@@ -10,8 +10,6 @@ import {
   widthPixel,
   heightPixel,
   fontPixel,
-  pixelSizeVertical,
-  pixelSizeHorizontal,
 } from "../components/Sizer";
 
 import React, { useEffect, useState } from "react";
@@ -50,10 +48,11 @@ const formatDate = (date) => {
 const shortenDrugName = (drugName) => {
   var string = "";
   var i = 0;
-  while (drugName[i] != "," && i < drugName.length) {
+  while ((drugName[i>0?i-1:0] != "," || drugName[i] != " ") && i < drugName.length && drugName[i] != "+") {
     string += drugName[i];
     i++;
   }
+  string = string.slice(0, -1);
   return string;
 };
 const GenerateBarCodeNumber = (prescription_ID) => {
@@ -161,6 +160,7 @@ function PageOrdonnancePlus({ route }) {
               data={otherData}
               keyExtractor={(item) => item.Id_Drug}
               renderItem={renderPrescriptionDrugItem}
+              style={styles.flatList}
             />
           )}
         </View>
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   medicamentContainer: {
     flexWrap: "wrap",
     marginTop: heightPixel(5),
-    marginLeft: pixelSizeHorizontal(20),
+    marginLeft: widthPixel(20),
     display: "flex",
     flexDirection: "column",
   },
@@ -223,5 +223,8 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(18),
     marginLeft: widthPixel(40),
     marginTop: heightPixel(20),
+  },
+  flatList: {
+    height: heightPixel(700),
   },
 });
