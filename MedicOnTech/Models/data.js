@@ -6,7 +6,11 @@ import Service from "./service";
 import Medicament from "./medicament";
 import { Appearance } from 'react-native';
 import { useState } from "react";
+
 export const URL = "http://10.23.216.41:3000";
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export const ID = 4;
 export const DATA = [
   new Ordonnance(1, "Maxence ROBICHON", 1, "2022-03-05", "Dr.Larouch"),
@@ -97,3 +101,6 @@ if (colorScheme === 'dark') {
 } else {
   theme = light_theme;
 }
+
+
+
