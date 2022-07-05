@@ -6,7 +6,7 @@ import axios from "axios";
 import {
   getDataDoctors,
   setDataDoctors,
-  deleteDataDoctors,
+  updateDataDoctors,
 } from "../server/Database";
 import { useNetInfo } from "@react-native-community/netinfo";
 
@@ -16,7 +16,7 @@ function PageContactDoctor() {
 
   const netInfo = useNetInfo();
 
-  const getDoctors = async () => {
+  const getDoctors = async (id) => {
     getDataDoctors()
       .then((data) => {
         setData(data);
@@ -24,11 +24,10 @@ function PageContactDoctor() {
       })
       .catch((error) => console.log(error));
     try {
-      if (
-        netInfo.isInternetReachable === true ||
-        netInfo.isInternetReachable === null
-      ) {
-        const response = await axios.get(`${URL}/api/motapp/doctor/8`);
+      if (netInfo.type !== "unknown" && netInfo.isInternetReachable === false) {
+        throw new Error("No internet connection");
+      } else {
+        const response = await axios.get(`${URL}/api/motapp/doctor/${id}`);
 
         const json = await response.data.result;
         json.forEach((element) => {
@@ -48,7 +47,7 @@ function PageContactDoctor() {
   };
 
   useEffect(() => {
-    getDoctors();
+    getDoctors(8);
   }, []);
 
   function renderDoctorItem(itemData) {
