@@ -11,33 +11,12 @@ import {
 } from "react-native";
 
 
-//get every settings
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-var Settings;
-
-const getData = async () => {
-  try {
-    const jsonValue = await AsyncStorage.getItem('Settings')
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch(e) {
-    console.log(e);
-  }
-}
-
-getData().then(data => {
-  console.log(data);
-  Settings = data;
-}
-);
 
 
-console.log(Settings);
+
 import { light_theme, dark_theme } from "../Models/data";
-//var theme = (Settings.theme === "light") ? light_theme : dark_theme;
 import { theme } from "../Models/data";
 
-//end
 import {
   widthPixel,
   heightPixel,

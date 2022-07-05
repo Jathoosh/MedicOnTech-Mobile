@@ -3,7 +3,6 @@ import { StyleSheet, View, TextInput, Pressable, Text } from "react-native";
 
 import * as SecureStore from "expo-secure-store";
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import {
@@ -14,28 +13,7 @@ import {
 
 } from "../components/Sizer";
 
-const storeData = async (value) => {
-  try {
-    const jsonValue = JSON.stringify(value)
-    await AsyncStorage.setItem('Settings', jsonValue)
-  } catch (e) {
-    console.log(e);
-  }
-}
 
-const getData = async () => {
-  try {
-    const jsonValue = await AsyncStorage.getItem('Settings')
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch(e) {
-    console.log(e);
-  }
-}
-
-const defaultSettings = {
-  theme: "light",
-  language: "fr",
-};
 
 
 function ConnexionInput(props) {
@@ -101,10 +79,6 @@ function ConnexionInput(props) {
       typeof enteredConnexionState === "string" &&
       typeof enteredPasswordState === "string"
     ) {
-      storeData(defaultSettings);
-      getData().then((data) => {
-        console.log(data);
-      });
       await SecureStore.setItemAsync("token", enteredConnexionState);
       setEnteredConnexion("");
       setEnteredPassword("");

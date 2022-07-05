@@ -7,9 +7,8 @@ import Medicament from "./medicament";
 import { Appearance } from 'react-native';
 import { useState } from "react";
 
-export const URL = "http://10.23.216.41:3000";
+export const URL = "http://10.23.216.41:3030";
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const ID = 4;
 export const DATA = [
