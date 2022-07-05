@@ -9,19 +9,14 @@ import {
   Dimensions,
   Linking,
 } from "react-native";
-
-
-
-
+import NetInfo from "@react-native-community/netinfo";
+import { useEffect } from "react";
+import { createTable } from "../server/Database";
 
 import { light_theme, dark_theme } from "../Models/data";
 import { theme } from "../Models/data";
 
-import {
-  widthPixel,
-  heightPixel,
-  fontPixel,
-} from "../components/Sizer";
+import { widthPixel, heightPixel, fontPixel } from "../components/Sizer";
 
 const url = "https://www.google.fr/maps/search/pharmacie";
 
@@ -42,6 +37,18 @@ function PageAccueil({ navigation }) {
   function NavigateParametres() {
     navigation.navigate("PageParametres");
   }
+
+  function Internet() {
+    NetInfo.addEventListener((state) => {
+      console.log("Connection type", state.type);
+      console.log("Is connected?", state.isConnected);
+      console.log("Is reachable", state.isInternetReachable);
+    });
+  }
+
+  useEffect(() => {
+    createTable();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -192,7 +199,11 @@ function PageAccueil({ navigation }) {
         </View>
         <View style={{ marginTop: heightPixel(15) }} />
         <View style={styles.containerSubButton}>
-          <Pressable  onPress={NavigateParametres} android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
+          <Pressable
+            onPress={NavigateParametres}
+            android_ripple={{ color: "#FFFFFF" }}
+            style={{ flex: 1 }}
+          >
             <Text style={styles.buttonTitleSub}>Paramètres</Text>
             <View
               style={{ height: heightPixel(50), position: "absolute", top: 0 }}
@@ -209,7 +220,11 @@ function PageAccueil({ navigation }) {
           </Pressable>
         </View>
         <View style={styles.containerSubButton}>
-          <Pressable onPress={NaviagateContactUs} android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
+          <Pressable
+            onPress={NaviagateContactUs}
+            android_ripple={{ color: "#FFFFFF" }}
+            style={{ flex: 1 }}
+          >
             <Text style={styles.buttonTitleSub}>Nous contacter</Text>
 
             <View

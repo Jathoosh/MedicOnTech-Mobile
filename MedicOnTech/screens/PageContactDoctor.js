@@ -3,19 +3,43 @@ import DoctorItem from "../components/DoctorItem";
 import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  getDataDoctors,
+  setDataDoctors,
+  updateDataDoctors,
+} from "../server/Database";
+import { useNetInfo } from "@react-native-community/netinfo";
 import { ID } from "../Models/data";
 
 function PageContactDoctor() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getMovies = async () => {
+  const netInfo = useNetInfo();
+
+  const getDoctors = async (id) => {
+    getDataDoctors()
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
     try {
+      if (netInfo.type !== "unknown" && netInfo.isInternetReachable === false) {
+        console.log("No internet connection");
+      } else {
+        const response = await axios.get(`${URL}/api/motapp/doctor/${id}`);
 
-      const response = await axios.get(`${URL}/api/motapp/doctor/${ID}`);
-
-      const json = await response.data;
-      setData(json.result);
+        const json = await response.data.result;
+        json.forEach((element) => {
+          if (element.Id_Person in data === false) {
+            setDataDoctors(element);
+          } else {
+            updateDataDoctors(element);
+          }
+        });
+        setData(json);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -24,7 +48,7 @@ function PageContactDoctor() {
   };
 
   useEffect(() => {
-    getMovies();
+    getDoctors(8);
   }, []);
 
   function renderDoctorItem(itemData) {
