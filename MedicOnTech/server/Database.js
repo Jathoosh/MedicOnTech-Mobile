@@ -12,6 +12,9 @@ export const createTable = () => {
     tx.executeSql(
       "CREATE TABLE IF NOT EXISTS Historique (Id_Prescription  INTEGER PRIMARY KEY, patient_firstname TEXT, patient_lastname TEXT,doctor_firstname TEXT,doctor_lastname TEXT, creation_date TEXT )"
     );
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS Prescription (Id_Drug  INTEGER PRIMARY KEY, drug_name TEXT, quantity INTEGER, Id_Prescription INTEGER, FOREIGN KEY (Id_Prescription) REFERENCES Ordonnances(Id_Prescription))"
+    );
   });
 };
 
@@ -66,6 +69,19 @@ export async function setDataHistorique(data) {
           data.doctor_lastname,
           data.creation_date,
         ]
+      );
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function setDataPrescription(data, Id_Prescription) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "INSERT INTO Prescription (Id_Drug, drug_name, quantity, Id_Prescription) VALUES (?,?,?,?)",
+        [data.Id_Drug, data.drug_name, data.quantity, Id_Prescription]
       );
     });
   } catch (error) {
@@ -132,6 +148,19 @@ export async function updateDataHistorique(data) {
   }
 }
 
+export async function updateDataPrescription(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "UPDATE Prescription SET drug_name = ?, quantity = ? WHERE Id_Drug = ?",
+        [data.drug_name, data.quantity, data.Id_Drug]
+      );
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function deleteDataDoctors(data) {
   try {
     db.transaction((tx) => {
@@ -161,6 +190,18 @@ export async function deleteDataHistorique(data) {
     db.transaction((tx) => {
       tx.executeSql("DELETE FROM Historique WHERE Id_Prescription = ?", [
         data.Id_Prescription,
+      ]);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteDataPrescription(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql("DELETE FROM Prescription WHERE Id_Drug = ?", [
+        data.Id_Drug,
       ]);
     });
   } catch (error) {
@@ -225,6 +266,31 @@ export async function getDataHistorique() {
         tx.executeSql(
           "SELECT * FROM Historique",
           [],
+          (tx, results) => {
+            var data = results.rows._array;
+            resolve(data);
+          },
+          function (error) {
+            reject(false);
+            throw new Error("Error: " + error);
+          }
+        );
+      },
+      function (error) {
+        reject(undefined);
+        throw new Error("error: " + error.message);
+      }
+    );
+  });
+}
+
+export async function getDataPrescription(Id_Prescription) {
+  return new Promise((resolve, reject) => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql(
+          "SELECT * FROM Prescription where Id_Prescription = ?",
+          [Id_Prescription],
           (tx, results) => {
             var data = results.rows._array;
             resolve(data);

@@ -32,7 +32,7 @@ function PageOrdonnance() {
       .catch((error) => console.log(error));
     try {
       if (netInfo.type !== "unknown" && netInfo.isInternetReachable === false) {
-        throw new Error("No internet connection");
+        console.log("No internet connection");
       } else {
         const response = await axios.get(`${URL}/api/motapp/ordonnance/${id}`);
 

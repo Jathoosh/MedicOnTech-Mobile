@@ -17,6 +17,12 @@ import {
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { URL } from "../Models/data";
+import { useNetInfo } from "@react-native-community/netinfo";
+import {
+  getDataPrescription,
+  setDataPrescription,
+  updateDataPrescription,
+} from "../server/Database";
 
 const months = [
   "janv.",
@@ -49,25 +55,49 @@ const shortenDrugName = (drugName) => {
     i++;
   }
   return string;
-}
+};
 const GenerateBarCodeNumber = (prescription_ID) => {
   var barcode = prescription_ID.toString();
   while (barcode.length < 12) {
-      barcode = "0" + barcode;
+    barcode = "0" + barcode;
   }
-  return "http://bwipjs-api.metafloor.com/?bcid=ean13&text=" + barcode+"&includetext";
-}
+  return (
+    "http://bwipjs-api.metafloor.com/?bcid=ean13&text=" +
+    barcode +
+    "&includetext"
+  );
+};
 function PageOrdonnancePlus({ route }) {
   const [isLoading, setLoading] = useState(true);
   const [otherData, setotherData] = useState([]);
 
+  const netInfo = useNetInfo();
+
   const getPrescription = async (id) => {
+    getDataPrescription(id)
+      .then((data) => {
+        setotherData(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
     try {
+      if (netInfo.type !== "unknown" && netInfo.isInternetReachable === false) {
+        console.log("No internet connection");
+      } else {
+        const response = await axios.get(
+          `${URL}/api/motapp/prescription/${id}`
+        );
 
-      const response = await axios.get(`${URL}/api/motapp/prescription/${id}`);
-
-      const json = await response.data;
-      setotherData(json.result);
+        const json = await response.data.result;
+        json.forEach((element) => {
+          if (element.Id_Person in data === false) {
+            setDataPrescription(element, id);
+          } else {
+            updateDataPrescription(element);
+          }
+        });
+        setotherData(json);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -84,8 +114,13 @@ function PageOrdonnancePlus({ route }) {
   function renderPrescriptionDrugItem(itemData) {
     return (
       <View style={styles.medicamentContainer}>
-        <Text style={styles.medicamentName}>💊 {shortenDrugName(itemData.item.drug_name)}</Text>
-        <Text style={styles.medicamentName}>        quantité : {itemData.item.quantity}</Text>
+        <Text style={styles.medicamentName}>
+          💊 {shortenDrugName(itemData.item.drug_name)}
+        </Text>
+        <Text style={styles.medicamentName}>
+          {" "}
+          quantité : {itemData.item.quantity}
+        </Text>
       </View>
     );
   }
@@ -100,7 +135,7 @@ function PageOrdonnancePlus({ route }) {
       </View>
       <View style={styles.imageContainer}>
         <Image
-          source={{uri:GenerateBarCodeNumber(data.Id_Prescription)}}
+          source={{ uri: GenerateBarCodeNumber(data.Id_Prescription) }}
           style={styles.image}
         />
       </View>
