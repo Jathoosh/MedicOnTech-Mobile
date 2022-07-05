@@ -11,7 +11,7 @@ import {
   
 } from "react-native";
 
-import { InAppBrowser } from 'react-native-inappbrowser-reborn'
+
 
 import {
   widthPixel,
@@ -28,55 +28,17 @@ import { ID } from "../Models/data";
 import { theme } from "../Models/data";
 
 
-async function openLink() {
-  try {
-    const url = 'https://www.google.com'
-    if (true) {
-      const result = await InAppBrowser.open(url, {
-        // iOS Properties
-        dismissButtonStyle: 'cancel',
-        preferredBarTintColor: '#453AA4',
-        preferredControlTintColor: 'white',
-        readerMode: false,
-        animated: true,
-        modalPresentationStyle: 'fullScreen',
-        modalTransitionStyle: 'coverVertical',
-        modalEnabled: true,
-        enableBarCollapsing: false,
-        // Android Properties
-        showTitle: true,
-        toolbarColor: '#6200EE',
-        secondaryToolbarColor: 'black',
-        navigationBarColor: 'black',
-        navigationBarDividerColor: 'white',
-        enableUrlBarHiding: true,
-        enableDefaultShare: true,
-        forceCloseOnRedirection: false,
-        // Specify full animation resource identifier(package:anim/name)
-        // or only resource name(in case of animation bundled with app).
-        animations: {
-          startEnter: 'slide_in_right',
-          startExit: 'slide_out_left',
-          endEnter: 'slide_in_left',
-          endExit: 'slide_out_right'
-        },
-        headers: {
-          'my-custom-header': 'my custom header value'
-        }
-      })
-      Alert.alert(JSON.stringify(result))
-    }
-    else Linking.openURL('https://www.google.com')
-  } catch (error) {
-    Alert.alert(error.message)
-  }
-}
 
 
 function PageOrdonnance() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [search, setSearch] = useState([]);
+
+
+ 
+
+
   console.log(search);
   const getOrdonnances = async (id) => {
     try {
@@ -105,9 +67,7 @@ function PageOrdonnance() {
     
     <View style={styles.container}>
       <View>
-        <View>
-          <Button title="Open link" onPress={openLink} />
-        </View>
+        
         <View>
           <TextInput
             style={styles.textInput}
