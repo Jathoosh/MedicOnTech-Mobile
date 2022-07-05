@@ -9,6 +9,9 @@ export const createTable = () => {
     tx.executeSql(
       "CREATE TABLE IF NOT EXISTS Ordonnances (Id_Prescription  INTEGER PRIMARY KEY, patient_firstname TEXT, patient_lastname TEXT,doctor_firstname TEXT,doctor_lastname TEXT, creation_date TEXT )"
     );
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS Historique (Id_Prescription  INTEGER PRIMARY KEY, patient_firstname TEXT, patient_lastname TEXT,doctor_firstname TEXT,doctor_lastname TEXT, creation_date TEXT )"
+    );
   });
 };
 
@@ -36,6 +39,25 @@ export async function setDataOrdonnance(data) {
     db.transaction((tx) => {
       tx.executeSql(
         "INSERT INTO Ordonnances (Id_Prescription, patient_firstname, patient_lastname,doctor_firstname,doctor_lastname,creation_date) VALUES (?,?,?,?,?,?)",
+        [
+          data.Id_Prescription,
+          data.patient_firstname,
+          data.patient_lastname,
+          data.doctor_firstname,
+          data.doctor_lastname,
+          data.creation_date,
+        ]
+      );
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function setDataHistorique(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "INSERT INTO Historique (Id_Prescription, patient_firstname, patient_lastname,doctor_firstname,doctor_lastname,creation_date) VALUES (?,?,?,?,?,?)",
         [
           data.Id_Prescription,
           data.patient_firstname,
@@ -90,6 +112,26 @@ export async function updateDataOrdonnace(data) {
   }
 }
 
+export async function updateDataHistorique(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "UPDATE Historique SET patient_firstname = ?, patient_lastname = ?,doctor_firstname = ?,doctor_lastname = ?,creation_date = ? WHERE Id_Prescription = ?",
+        [
+          data.patient_firstname,
+          data.patient_lastname,
+          data.doctor_firstname,
+          data.doctor_lastname,
+          data.creation_date,
+          data.Id_Prescription,
+        ]
+      );
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function deleteDataDoctors(data) {
   try {
     db.transaction((tx) => {
@@ -106,6 +148,18 @@ export async function deleteDataOrdonnance(data) {
   try {
     db.transaction((tx) => {
       tx.executeSql("DELETE FROM Ordonnances WHERE Id_Prescription = ?", [
+        data.Id_Prescription,
+      ]);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteDataHistorique(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql("DELETE FROM Historique WHERE Id_Prescription = ?", [
         data.Id_Prescription,
       ]);
     });
@@ -145,6 +199,31 @@ export async function getDataOrdonnance() {
       (tx) => {
         tx.executeSql(
           "SELECT * FROM Ordonnances",
+          [],
+          (tx, results) => {
+            var data = results.rows._array;
+            resolve(data);
+          },
+          function (error) {
+            reject(false);
+            throw new Error("Error: " + error);
+          }
+        );
+      },
+      function (error) {
+        reject(undefined);
+        throw new Error("error: " + error.message);
+      }
+    );
+  });
+}
+
+export async function getDataHistorique() {
+  return new Promise((resolve, reject) => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql(
+          "SELECT * FROM Historique",
           [],
           (tx, results) => {
             var data = results.rows._array;
