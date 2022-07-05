@@ -24,4 +24,5 @@ npm install express --save
 npm install mysqli --save
 npm install body-parser --save
 expo install @react-native-async-storage/async-storage
+npm install react-native-select-dropdown
 ```

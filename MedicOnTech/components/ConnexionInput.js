@@ -3,6 +3,8 @@ import { StyleSheet, View, TextInput, Pressable, Text } from "react-native";
 
 import * as SecureStore from "expo-secure-store";
 
+
+
 import {
   widthPixel,
   heightPixel,
@@ -10,6 +12,8 @@ import {
 
 
 } from "../components/Sizer";
+
+
 
 
 function ConnexionInput(props) {
@@ -47,6 +51,7 @@ function ConnexionInput(props) {
       const storedToken = await SecureStore.getItemAsync("token");
       if (storedToken === enteredConnexionState) {
         validHandler();
+        
       } else {
         console.log("Invalid connexion");
       }
@@ -64,6 +69,8 @@ function ConnexionInput(props) {
     }
   }
 
+
+
   async function authenticateConnexionHandler() {
     if (
       enteredConnexionState === enteredPasswordState &&
@@ -76,6 +83,7 @@ function ConnexionInput(props) {
       setEnteredConnexion("");
       setEnteredPassword("");
       validHandler();
+      
     } else {
       console.log("Invalid authentification");
       setCount(count + 1);

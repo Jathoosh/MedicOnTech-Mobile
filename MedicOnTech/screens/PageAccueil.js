@@ -10,6 +10,11 @@ import {
   Linking,
 } from "react-native";
 
+
+
+
+
+import { light_theme, dark_theme } from "../Models/data";
 import { theme } from "../Models/data";
 
 import {
@@ -33,6 +38,9 @@ function PageAccueil({ navigation }) {
   function NaviagateContactUs() {
     navigation.navigate("PageContactUs");
     console.log("PageContactUs");
+  }
+  function NavigateParametres() {
+    navigation.navigate("PageParametres");
   }
 
   return (
@@ -184,7 +192,7 @@ function PageAccueil({ navigation }) {
         </View>
         <View style={{ marginTop: heightPixel(15) }} />
         <View style={styles.containerSubButton}>
-          <Pressable android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
+          <Pressable  onPress={NavigateParametres} android_ripple={{ color: "#FFFFFF" }} style={{ flex: 1 }}>
             <Text style={styles.buttonTitleSub}>Paramètres</Text>
             <View
               style={{ height: heightPixel(50), position: "absolute", top: 0 }}
