@@ -9,27 +9,77 @@ export const createTable = () => {
   });
 };
 
-export const setDataDoctors = async () => {
+export async function setDataDoctors(data) {
   try {
-    await db.transaction(async (tx) => {
-      await tx.executeSql(
+    db.transaction((tx) => {
+      tx.executeSql(
         "INSERT INTO Doctors (Id_Person, first_name, last_name,phone,email_address) VALUES (?,?,?,?,?)",
-        [2, "John", "Doe", "0123456789", "zdza"]
+        [
+          data.Id_Person,
+          data.first_name,
+          data.last_name,
+          data.phone,
+          data.email_address,
+        ]
       );
     });
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-export const getDataDoctors = () => {
+export async function updateDataDoctors(data) {
   try {
     db.transaction((tx) => {
-      tx.executeSql("SELECT * FROM Doctors", [], (trans, result) => {
-        console.log(result);
-      });
+      tx.executeSql(
+        "UPDATE Doctors SET first_name = ?, last_name = ?,phone = ?,email_address = ? WHERE Id_Person = ?",
+        [
+          data.first_name,
+          data.last_name,
+          data.phone,
+          data.email_address,
+          data.Id_Person,
+        ]
+      );
     });
   } catch (error) {
     console.log(error);
   }
-};
+}
+
+export async function deleteDataDoctors(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql("DELETE FROM Doctors WHERE Id_Person = ?", [
+        data.Id_Person,
+      ]);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getDataDoctors() {
+  return new Promise((resolve, reject) => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql(
+          "SELECT * FROM Doctors",
+          [],
+          (tx, results) => {
+            var data = results.rows._array;
+            resolve(data);
+          },
+          function (error) {
+            reject(false);
+            throw new Error("Error: " + error);
+          }
+        );
+      },
+      function (error) {
+        reject(undefined);
+        throw new Error("error: " + error.message);
+      }
+    );
+  });
+}

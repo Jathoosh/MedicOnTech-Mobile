@@ -11,11 +11,7 @@ import {
 } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 import { useEffect } from "react";
-import {
-  createTable,
-  getDataDoctors,
-  setDataDoctors,
-} from "../server/Database";
+import { createTable } from "../server/Database";
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const widthBaseScale = SCREEN_WIDTH / 384;
@@ -80,16 +76,8 @@ function PageAccueil({ navigation }) {
     });
   }
 
-  const item = {
-    Id_Person: 1,
-    first_name: "John",
-    last_name: "Doe",
-    email_address: "azdza",
-    phone: "azdaz",
-  };
   useEffect(() => {
     createTable();
-    getDataDoctors();
   }, []);
 
   return (
@@ -145,7 +133,7 @@ function PageAccueil({ navigation }) {
 
           <View style={styles.containerButton}>
             <Pressable
-              onPress={setDataDoctors}
+              onPress={NavigateHistorique}
               android_ripple={{ color: "#FFFFFF" }}
               style={{ flex: 1 }}
             >

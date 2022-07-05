@@ -3,17 +3,43 @@ import DoctorItem from "../components/DoctorItem";
 import { URL } from "../Models/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  getDataDoctors,
+  setDataDoctors,
+  deleteDataDoctors,
+} from "../server/Database";
+import { useNetInfo } from "@react-native-community/netinfo";
+
 function PageContactDoctor() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getMovies = async () => {
+  const netInfo = useNetInfo();
+
+  const getDoctors = async () => {
+    getDataDoctors()
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
     try {
+      if (
+        netInfo.isInternetReachable === true ||
+        netInfo.isInternetReachable === null
+      ) {
+        const response = await axios.get(`${URL}/api/motapp/doctor/8`);
 
-      const response = await axios.get(`${URL}/api/motapp/doctor`);
-
-      const json = await response.data;
-      setData(json.result);
+        const json = await response.data.result;
+        json.forEach((element) => {
+          if (element.Id_Person in data === false) {
+            setDataDoctors(element);
+          } else {
+            updateDataDoctors(element);
+          }
+        });
+        setData(json);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -22,7 +48,7 @@ function PageContactDoctor() {
   };
 
   useEffect(() => {
-    getMovies();
+    getDoctors();
   }, []);
 
   function renderDoctorItem(itemData) {
