@@ -4,10 +4,10 @@ import Ordonnance_service from "./ordonnance_service";
 import Ordonnance_medicament from "./ordonnance_medicament";
 import Service from "./service";
 import Medicament from "./medicament";
-import { Appearance } from 'react-native';
+import { Appearance } from "react-native";
 import { useState } from "react";
 
-export const URL = "http://10.23.216.41:3030";
+export const URL = "http://192.168.230.100:3030";
 export const ID = 12;
 
 export const DATA = [
@@ -90,15 +90,10 @@ export const light_theme = {
   subButton: "#d9d9d9",
 };
 
-
-
 export var theme;
 const colorScheme = Appearance.getColorScheme();
-if (colorScheme === 'dark') {
+if (colorScheme === "dark") {
   theme = dark_theme;
 } else {
   theme = light_theme;
 }
-
-
-

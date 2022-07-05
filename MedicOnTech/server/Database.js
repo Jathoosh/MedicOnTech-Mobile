@@ -3,6 +3,10 @@ const db = SQLite.openDatabase("MedicOnTech.db");
 
 export const createTable = () => {
   db.transaction((tx) => {
+    /*tx.executeSql("drop table if exists Doctors");
+    tx.executeSql("drop table if exists Ordonnances");
+    tx.executeSql("drop table if exists Historique");
+    tx.executeSql("drop table if exists Prescription");*/
     tx.executeSql(
       "CREATE TABLE IF NOT EXISTS Doctors (Id_Person INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT,phone TEXT,email_address TEXT )"
     );
