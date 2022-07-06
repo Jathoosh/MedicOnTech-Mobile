@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 
 import {
   widthPixel,
@@ -20,6 +20,7 @@ import {
 
 import ConnexionInput from "../components/ConnexionInput";
 import * as WebBrowser from 'expo-web-browser';
+//import DeviceInfo from 'react-native-device-info';
 
 function PageConnexion({ navigation }) {
   async function addConnexionHandler(isValid) {
@@ -27,12 +28,18 @@ function PageConnexion({ navigation }) {
       navigation.replace("PageAccueil");
     }
   }
-
+  //const id_phone = DeviceInfo.getUniqueId();
+  //console.log(id_phone);
   const [result, setResult] = useState(null);
+  /*
   const _handlePressButtonAsync = async () => {
-    let result = await WebBrowser.openAuthSessionAsync('https://google.com');
-    setResult(result);
-  };
+    let result = await WebBrowser.openAuthSessionAsync('http://10.23.201.19:3030/#/mobile_login/' + id_phone);
+    if (result.type === 'dismiss') {
+      const res = await axios.get('http://10.23.201.19:3030/api/motapp/checkconnexion');
+      setResult(res.data);
+
+    }
+  };*/
 
 
   return (

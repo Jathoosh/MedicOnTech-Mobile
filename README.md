@@ -24,4 +24,5 @@ npm install express --save
 npm install mysqli --save
 npm install body-parser --save
 expo install expo-web-browser
+npm i react-native-device-info
 ```
