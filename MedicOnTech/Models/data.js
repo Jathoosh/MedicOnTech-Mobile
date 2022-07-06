@@ -7,7 +7,7 @@ import Medicament from "./medicament";
 import { Appearance } from "react-native";
 import { useState } from "react";
 
-export const URL = "http://192.168.230.100:3030";
+export const URL = "http://10.13.215.41:3030";
 export const ID = 12;
 
 export const DATA = [

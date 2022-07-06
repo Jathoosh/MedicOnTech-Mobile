@@ -130,8 +130,7 @@ const styles = StyleSheet.create({
     fontFamily: "cera-pro-medium",
     fontSize: fontPixel(18),
     alignSelf: "center",
-    display: "flex",
-    alignItems: "flex-end",
+    
   },
 
 });
