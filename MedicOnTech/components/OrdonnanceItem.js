@@ -74,7 +74,7 @@ function OrdonnanceItem({ data, page }) {
           <View style={styles.innerText}>
             {page === "ordonnance" && (
               <Text style={styles.buttonDesc}>
-                Délivré le : {"\n"}{formatDate(data.creation_date)}
+                Délivrée le : {"\n"}{formatDate(data.creation_date)}
               </Text>
             )}
             {page === "historique" && (

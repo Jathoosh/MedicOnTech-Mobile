@@ -140,7 +140,7 @@ function PageOrdonnancePlus({ route }) {
       </View>
       <View style={{ marginTop: heightPixel(30) }}>
         <View style={styles.textContainer}>
-          <Text style={styles.boldText}>Délivré le : </Text>
+          <Text style={styles.boldText}>Délivrée le : </Text>
           <Text style={styles.normalText}>
             {formatDate(data.creation_date)}
           </Text>
