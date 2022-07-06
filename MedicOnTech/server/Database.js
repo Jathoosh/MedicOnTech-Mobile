@@ -19,6 +19,9 @@ export const createTable = () => {
     tx.executeSql(
       "CREATE TABLE IF NOT EXISTS Prescription (Id_Drug  INTEGER PRIMARY KEY, drug_name TEXT, quantity INTEGER, Id_Prescription INTEGER, FOREIGN KEY (Id_Prescription) REFERENCES Ordonnances(Id_Prescription))"
     );
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS Settings (Id_Setting INTEGER PRIMARY KEY, setting_name TEXT, setting_value TEXT)",
+    );
   });
 };
 
@@ -86,6 +89,18 @@ export async function setDataPrescription(data, Id_Prescription) {
       tx.executeSql(
         "INSERT INTO Prescription (Id_Drug, drug_name, quantity, Id_Prescription) VALUES (?,?,?,?)",
         [data.Id_Drug, data.drug_name, data.quantity, Id_Prescription]
+      );
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function setDataSettings(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql(
+        `INSERT INTO Settings (Id_Setting, setting_name, setting_value) VALUES (${data.Id_Setting},'${data.setting_name}','${data.setting_value}')`,
       );
     });
   } catch (error) {
@@ -162,6 +177,21 @@ export async function updateDataPrescription(data) {
     });
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function updateDataSettings(data) {
+  try {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "UPDATE Settings SET setting_value = ? WHERE setting_name = ?",
+        [data.setting_value, data.setting_name]
+      );
+    });
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
   }
 }
 
@@ -295,6 +325,31 @@ export async function getDataPrescription(Id_Prescription) {
         tx.executeSql(
           "SELECT * FROM Prescription where Id_Prescription = ?",
           [Id_Prescription],
+          (tx, results) => {
+            var data = results.rows._array;
+            resolve(data);
+          },
+          function (error) {
+            reject(false);
+            throw new Error("Error: " + error);
+          }
+        );
+      },
+      function (error) {
+        reject(undefined);
+        throw new Error("error: " + error.message);
+      }
+    );
+  });
+}
+
+export async function getDataSettings() {
+  return new Promise((resolve, reject) => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql(
+          "SELECT * from Settings",
+          [],
           (tx, results) => {
             var data = results.rows._array;
             resolve(data);

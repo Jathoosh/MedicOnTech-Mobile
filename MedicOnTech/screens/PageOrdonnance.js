@@ -41,7 +41,7 @@ function PageOrdonnance() {
       .then((data) => {
         setData(data);
         setSearch(data);
-        console.log(data);
+        console.log("data locales : ", data);
       })
       .catch((error) => console.log(error));
     try {

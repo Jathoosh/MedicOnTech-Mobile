@@ -1,8 +1,9 @@
 import { View, StyleSheet, Text, Pressable, Switch } from "react-native";
 import SelectDropdown from 'react-native-select-dropdown'
+import { useEffect, useState } from "react";
 const languages = ["Français", "English"];
 const themes = ["sombre", "clair"];
-
+import { getDataSettings, updateDataSettings } from "../server/Database";
 
 import {
   widthPixel,
@@ -11,6 +12,27 @@ import {
 } from "../components/Sizer";
 
 function PageParametres() {
+  const defaultSetting = [{
+    Id_Setting: 1,
+    setting_name: "language",
+    setting_value: "",
+  },
+  {
+    Id_Setting: 2,
+    setting_name: "theme",
+    setting_value: "",
+  }];
+  const [settingData , setSettingData] = useState(defaultSetting);
+  const getSettings = async () => {
+    await getDataSettings()
+      .then((data) => {
+        setSettingData(data);
+      }
+    );
+  }
+  useEffect(() => {
+    getSettings();
+  }, []);
 
 
 
@@ -24,6 +46,18 @@ function PageParametres() {
                     data={themes}
                     onSelect={(selectedItem, index) => {
                       console.log(selectedItem, index)
+                      updateDataSettings({setting_value: selectedItem === "clair" ? "light" : "dark", setting_name: "theme"});
+                      setSettingData([{
+                        Id_Setting: 1,
+                        setting_name: "language",
+                        setting_value: settingData[0].setting_value,
+                      },
+                      {
+                        Id_Setting: 2,
+                        setting_name: "theme",
+                        setting_value: selectedItem === "clair" ? "light" : "dark",
+                      }]);
+                      console.log(settingData);
                     }}
                     renderDropdownIcon={() => (
                       <View style={styles.dropdownIcon}>
@@ -32,7 +66,7 @@ function PageParametres() {
                     )}
                     buttonStyle={styles.dropdownButton}
                     buttonTextStyle={styles.dropdownButtonText}
-                    defaultButtonText={themes[0]}
+                    defaultButtonText={settingData[1].setting_value === "light" ? themes[1] : themes[0]}
                     buttonTextAfterSelection={(selectedItem, index) => {
                       // text represented after item is selected
                       // if data array is an array of objects then return selectedItem.property to render after item is selected
@@ -62,7 +96,7 @@ function PageParametres() {
                     )}
                     buttonStyle={styles.dropdownButton}
                     buttonTextStyle={styles.dropdownButtonText}
-                    defaultButtonText={languages[0]}
+                    defaultButtonText={settingData[0].setting_value === "fr" ? languages[0] : languages[1]}
                     buttonTextAfterSelection={(selectedItem, index) => {
                       // text represented after item is selected
                       // if data array is an array of objects then return selectedItem.property to render after item is selected
