@@ -38,14 +38,6 @@ function PageAccueil({ navigation }) {
     navigation.navigate("PageParametres");
   }
 
-  function Internet() {
-    NetInfo.addEventListener((state) => {
-      console.log("Connection type", state.type);
-      console.log("Is connected?", state.isConnected);
-      console.log("Is reachable", state.isInternetReachable);
-    });
-  }
-
   useEffect(() => {
     createTable();
   }, []);
