@@ -2,19 +2,9 @@ import { useEffect, useState } from "react";
 import { StyleSheet, View, TextInput, Pressable, Text } from "react-native";
 
 import * as SecureStore from "expo-secure-store";
+import { deleteTables } from "../server/Database";
 
-
-
-import {
-  widthPixel,
-  heightPixel,
-  fontPixel,
-
-
-} from "../components/Sizer";
-
-
-
+import { widthPixel, heightPixel, fontPixel } from "../components/Sizer";
 
 function ConnexionInput(props) {
   const [enteredConnexionState, setEnteredConnexion] = useState("");
@@ -51,7 +41,6 @@ function ConnexionInput(props) {
       const storedToken = await SecureStore.getItemAsync("token");
       if (storedToken === enteredConnexionState) {
         validHandler();
-        
       } else {
         console.log("Invalid connexion");
       }
@@ -63,13 +52,12 @@ function ConnexionInput(props) {
   async function removeItemValue() {
     try {
       await SecureStore.deleteItemAsync("token");
+      deleteTables();
       return true;
     } catch (exception) {
       return false;
     }
   }
-
-
 
   async function authenticateConnexionHandler() {
     if (
@@ -83,7 +71,6 @@ function ConnexionInput(props) {
       setEnteredConnexion("");
       setEnteredPassword("");
       validHandler();
-      
     } else {
       console.log("Invalid authentification");
       setCount(count + 1);
@@ -92,7 +79,6 @@ function ConnexionInput(props) {
   }
   return (
     <View style={styles.encadres}>
-
       {isStored ? (
         <View>
           <Text style={styles.textConnexion}>Connexion</Text>
@@ -152,7 +138,6 @@ function ConnexionInput(props) {
           </Pressable>
         </View>
       )}
-
     </View>
   );
 }

@@ -2,25 +2,38 @@ import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("MedicOnTech.db");
 
 export const createTable = () => {
-  db.transaction((tx) => {
-    /*tx.executeSql("drop table if exists Doctors");
-    tx.executeSql("drop table if exists Ordonnances");
-    tx.executeSql("drop table if exists Historique");
-    tx.executeSql("drop table if exists Prescription");*/
-    tx.executeSql(
-      "CREATE TABLE IF NOT EXISTS Doctors (Id_Person INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT,phone TEXT,email_address TEXT )"
-    );
-    tx.executeSql(
-      "CREATE TABLE IF NOT EXISTS Ordonnances (Id_Prescription  INTEGER PRIMARY KEY, patient_firstname TEXT, patient_lastname TEXT,doctor_firstname TEXT,doctor_lastname TEXT, creation_date TEXT )"
-    );
-    tx.executeSql(
-      "CREATE TABLE IF NOT EXISTS Historique (Id_Prescription  INTEGER PRIMARY KEY, patient_firstname TEXT, patient_lastname TEXT,doctor_firstname TEXT,doctor_lastname TEXT, creation_date TEXT )"
-    );
-    tx.executeSql(
-      "CREATE TABLE IF NOT EXISTS Prescription (Id_Drug  INTEGER PRIMARY KEY, drug_name TEXT, quantity INTEGER, Id_Prescription INTEGER, FOREIGN KEY (Id_Prescription) REFERENCES Ordonnances(Id_Prescription))"
-    );
-  });
+  try {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS Doctors (Id_Person INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT,phone TEXT,email_address TEXT )"
+      );
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS Ordonnances (Id_Prescription  INTEGER PRIMARY KEY, patient_firstname TEXT, patient_lastname TEXT,doctor_firstname TEXT,doctor_lastname TEXT, creation_date TEXT )"
+      );
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS Historique (Id_Prescription  INTEGER PRIMARY KEY, patient_firstname TEXT, patient_lastname TEXT,doctor_firstname TEXT,doctor_lastname TEXT, creation_date TEXT )"
+      );
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS Prescription (Id_Drug  INTEGER PRIMARY KEY, drug_name TEXT, quantity INTEGER, Id_Prescription INTEGER, FOREIGN KEY (Id_Prescription) REFERENCES Ordonnances(Id_Prescription))"
+      );
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
+
+export async function deleteTables() {
+  try {
+    await db.transaction((tx) => {
+      tx.executeSql("drop table if exists Doctors");
+      tx.executeSql("drop table if exists Ordonnances");
+      tx.executeSql("drop table if exists Historique");
+      tx.executeSql("drop table if exists Prescription");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function setDataDoctors(data) {
   try {
