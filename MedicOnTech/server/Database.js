@@ -1,6 +1,50 @@
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("MedicOnTech.db");
 
+
+export const createDevice = () => {
+  try{
+    db.transaction((tx) => {
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS Device (Id_Device INTEGER PRIMARY KEY NOT NULL)",
+      )}
+    )
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+export async function setDevice(Id_Device) {
+  try{
+    db.transaction((tx) => {
+      tx.executeSql(
+        "INSERT INTO Device (Id_Device) VALUES (?)",
+        [Id_Device],
+      )}
+    )
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+export async function getDevice() {
+  try{
+    db.transaction((tx) => {
+      tx.executeSql(
+        "SELECT * FROM Device",
+        [],
+        (_, { rows }) => {
+          console.log(rows);
+        }
+      )}
+    )
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+
+
 export const createTable = () => {
   try {
     db.transaction((tx) => {
@@ -29,6 +73,7 @@ export async function deleteTables() {
       tx.executeSql("drop table if exists Ordonnances");
       tx.executeSql("drop table if exists Historique");
       tx.executeSql("drop table if exists Prescription");
+      tx.executeSql("drop table if exists Device");
     });
   } catch (error) {
     console.log(error);
