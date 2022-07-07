@@ -58,8 +58,14 @@ function PageOrdonnance() {
             updateDataOrdonnace(element);
           }
         });
-        setData(json);
-        setSearch(json);
+        var sortedResult = json.sort((a, b) => {
+          return new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime();
+        });
+        
+        setData(sortedResult);
+        setSearch(sortedResult);
+        //setData(json);
+        //setSearch(json);
       }
     } catch (error) {
       console.error(error);
@@ -87,8 +93,13 @@ function PageOrdonnance() {
     } catch (error) {
       console.error(error);
     } finally {
-      setData(result);
-      setSearch(result);
+      
+      var sortedResult = result.sort((a, b) => {
+        return new Date(b.creation_date).getTime() - new Date(a.creation_date).getTime();
+      });
+      
+      setData(sortedResult);
+      setSearch(sortedResult);
       setLoading(false);
     }
   };

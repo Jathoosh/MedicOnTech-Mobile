@@ -9,9 +9,16 @@ import {
 
 } from "../components/Sizer";
 
+import { URL } from "../Models/data";
 
+import * as WebBrowser from "expo-web-browser";
 
 function PageContactUs() {
+
+  const openLink = async (link) => {
+    await WebBrowser.openBrowserAsync(link);
+  };
+
   return (
     <View style={styles.container}>
       
@@ -23,19 +30,19 @@ function PageContactUs() {
         </Pressable>
       </View>
       <View style={styles.buttonOptionViewGray}>
-        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} >
+        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/")}}>
           <Image source={require("../assets/message.png")} style={styles.image}/>
           <Text style={styles.buttonOptionTextBlack}>Donnez votre avis</Text>
         </Pressable>
       </View>
       <View style={styles.buttonOptionViewGray}>
-        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} >
+        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/")}}>
           <Image source={require("../assets/interogation.png")} style={styles.image}/>
           <Text style={styles.buttonOptionTextBlack}>Questions / Réponses</Text>
         </Pressable>
       </View>
       <View style={styles.buttonOptionViewGray}>
-        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} >
+        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/")}}>
           <Image source={require("../assets/lamp.png")} style={styles.image}/>
           <Text style={styles.buttonOptionTextBlack}>À propos</Text>
         </Pressable>

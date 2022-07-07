@@ -41,7 +41,8 @@
     "react-native-select-dropdown": "^2.0.4",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-web": "0.17.7",
-    "realm": "^10.19.3"
+    "realm": "^10.19.3",
+    "expo-web-browser": "~10.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
