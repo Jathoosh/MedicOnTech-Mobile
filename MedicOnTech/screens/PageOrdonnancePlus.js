@@ -23,18 +23,18 @@ import {
 } from "../server/Database";
 
 const months = [
-  "janv.",
-  "févr.",
+  "janvier",
+  "février",
   "mars",
-  "avr.",
+  "avril",
   "mai",
   "juin",
-  "juill.",
+  "juillet",
   "août",
-  "sept.",
-  "oct.",
-  "nov.",
-  "déc.",
+  "septembre",
+  "octobre",
+  "novembre",
+  "décembre",
 ];
 
 const formatDate = (date) => {
