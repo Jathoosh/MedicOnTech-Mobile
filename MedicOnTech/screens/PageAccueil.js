@@ -107,15 +107,16 @@ function PageAccueil({ navigation }) {
               </View>
               <View
                 style={{
+                  marginLeft: widthPixel(5),
                   height: heightPixel(120),
                   position: "absolute",
                   top: 0,
                 }}
               >
                 <Image
-                  source={require("../assets/ordonnance.png")}
+                  source={require("../assets/icon-horloge.png")}
                   style={{
-                    width: widthPixel(100),
+                    width: widthPixel(90),
                     height: heightPixel(120),
                     resizeMode: "contain",
                   }}

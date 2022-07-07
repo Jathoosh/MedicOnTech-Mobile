@@ -117,6 +117,19 @@ export default function App() {
             }}
           />
           <Stack.Screen
+            name="PageOrdonnancePlusHistory"
+            component={PageOrdonnancePlus}
+            options={{
+              headerBackVisible: false,
+              headerTitle: () => (
+                <Header nameGoBack="PageHistorique" nameTitle="Ordonnance" />
+              ),
+              headerStyle: {
+                backgroundColor: theme.headerBackground,
+              },
+            }}
+          />
+          <Stack.Screen
             name="PageParametres"
             component={PageParametres}
             options={{

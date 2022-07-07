@@ -42,10 +42,14 @@ function OrdonnanceItem({ data, page }) {
   function NavigateOrdonnance() {
     navigation.navigate("PageOrdonnancePlus", {data: data});
   }
+  function NavigateOrdonnanceHistory() {
+    navigation.navigate("PageOrdonnancePlusHistory", {data: data});
+  }
+  
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={NavigateOrdonnance}
+        onPress={(page === "ordonnance")? NavigateOrdonnance : NavigateOrdonnanceHistory}
         android_ripple={{ color: "#FFFFFF" }}
         style={{ flex: 1, borderRadius: 10 }}
       >
