@@ -30,19 +30,19 @@ function PageContactUs() {
         </Pressable>
       </View>
       <View style={styles.buttonOptionViewGray}>
-        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/")}}>
+        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/contact")}}>
           <Image source={require("../assets/message.png")} style={styles.image}/>
           <Text style={styles.buttonOptionTextBlack}>Donnez votre avis</Text>
         </Pressable>
       </View>
       <View style={styles.buttonOptionViewGray}>
-        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/")}}>
+        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/Faq")}}>
           <Image source={require("../assets/interogation.png")} style={styles.image}/>
           <Text style={styles.buttonOptionTextBlack}>Questions / Réponses</Text>
         </Pressable>
       </View>
       <View style={styles.buttonOptionViewGray}>
-        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/")}}>
+        <Pressable android_ripple={{color: "#ffffff", borderless: "true"}} style={styles.buttonOption} onPress={() => {openLink(URL+"/#/A_propos")}}>
           <Image source={require("../assets/lamp.png")} style={styles.image}/>
           <Text style={styles.buttonOptionTextBlack}>À propos</Text>
         </Pressable>

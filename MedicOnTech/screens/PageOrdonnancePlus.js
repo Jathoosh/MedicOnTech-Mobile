@@ -39,7 +39,7 @@ const months = [
 
 const formatDate = (date) => {
   var tempDate = new Date(date);
-  var string = tempDate.getDay().toString();
+  var string = tempDate.getDate().toString();
   string += " " + months[tempDate.getMonth()] + " ";
   string += tempDate.getFullYear().toString();
   return string;
